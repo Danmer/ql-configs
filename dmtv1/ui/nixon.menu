@@ -1,0 +1,1750 @@
+#include "ui/menudef.h"
+
+  /* --- Health indicator --- */
+
+menuDef {
+	name "healthIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 270 438 62 22 
+
+	
+	itemDef {
+		name "healthIndicatorIcon" 
+		rect 0 0 0 0 
+		visible 1
+		decoration
+		style 1
+		ownerdraw CG_PLAYER_HEAD
+	}
+	
+	itemDef {
+		name "healthIndicatorCounter"
+		rect 0 0 62 22 
+		visible 1
+		textalign 0
+		decoration
+		textstyle 3 
+		forecolor 1 1 1 1 
+		textscale 0.6 
+		ownerdraw CG_PLAYER_HEALTH
+		addColorRange -999 50 1 0 0 1 
+		addColorRange 51 100 1 0.8 0.2 1 
+		addColorRange 101 999 1 1 1 1 
+	}
+}
+
+/* --- Armor indicator --- */
+menuDef {
+	name "armorIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 337 438 62 22 
+	
+	itemDef {
+		name "armorIndicatorIcon" 
+		rect 0 0 0 0 
+		visible 1
+		decoration
+		style 1
+		background "icons/iconr_red"		
+	
+	}
+
+	itemDef {
+		name "armorIndicatorCounter"
+		rect 0 0 62 22 
+		visible 1
+		textalign 0
+		decoration
+		textstyle 3 
+		forecolor 1 0.8 0.2 1 
+		textscale 0.6 
+		ownerdraw CG_PLAYER_ARMOR_VALUE
+		addColorRange -999 50 1 0 0 1 
+		addColorRange 51 100 1 0.8 0.2 1 
+		addColorRange 101 999 1 1 1 1 
+	}
+}
+
+/* --- TOP LEFT SCORE BOX --- */
+
+// RED TEAM SCORE BAR
+menuDef {
+	name "redTeamScores"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect 269 57 50 16
+	ownerdrawflag CG_SHOW_ANYTEAMGAME
+
+//	your team is red - red highlight
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED		
+		decoration
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+		decoration
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+		decoration
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+
+//	your team is blue - red team bg	
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE		
+		decoration
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+		decoration
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+		decoration
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+	
+// red team score
+	itemdef {
+		name "blueTeamScore"		
+		ownerdraw CG_1STPLACE
+		rect 28 12 35 9
+		visible 1
+		forecolor 1 1 1 0.8
+		textscale .24
+		textalign 2
+		textstyle 2
+		decoration
+	}
+
+//TDM marker
+	itemDef {
+		name "clanArena"
+		rect -4 -4 23 23
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+		cvartest g_gametype
+		showcvar { "3" }
+		background "ui/assets/score/ca_arrow_red.tga"
+	}
+	
+//	clan arena count
+	itemDef {
+		name "clanArena"
+		rect 2 2 21 11
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+		cvartest g_gametype
+		showcvar { "4" }
+		background "ui/assets/score/ca_score_red.tga"
+	}
+	itemdef {
+		name "redClanPlayers"
+//		ownerdrawflag CG_SHOW_CLAN_ARENA
+		ownerdraw CG_RED_CLAN_PLYRS  
+		rect 14 11 136 40
+		visible 1
+		textscale .18
+		forecolor 1 1 1 0.65
+		decoration
+	}
+
+//	ctf icons	
+	itemDef {
+		name "f"
+		rect 2 2 11 11
+		visible 1
+		bordercolor 1 1 1 1
+		decoration	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_red.tga"
+	}
+	itemDef {
+		name "redflag"
+		rect 2 2 11 11
+		visible 1
+		decoration
+		ownerdrawflag CG_SHOW_CTF                       
+		ownerdraw CG_RED_FLAGSTATUS
+	}
+	itemDef {
+		name "oneflagstatus"
+		rect 2 2 11 11
+		visible 1
+		decoration                	
+		ownerdraw CG_ONEFLAG_STATUS 
+	}
+}
+
+// BLUE TEAM SCORE BAR
+menuDef {
+	name "blueTeamScores"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect 321 57 50 16
+	ownerdrawflag CG_SHOW_ANYTEAMGAME
+
+// your team is blue - blue highlight
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+		decoration
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+		decoration
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+		decoration
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+
+//	your team is red - blue team bg
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+		decoration
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+		decoration
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+		decoration
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+
+// blue team score
+	itemdef {
+		name "blueTeamScore"		
+		ownerdraw CG_2NDPLACE
+		rect 28 12 35 9
+		visible 1
+		forecolor 1 1 1 0.8
+		textscale .24
+		textalign 2
+		textstyle 2
+		decoration
+	}
+
+//TDM marker
+	itemDef {
+		name "clanArena"
+		rect -4 -4 23 23
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+		cvartest g_gametype
+		showcvar { "3" }
+		background "ui/assets/score/ca_arrow_blue.tga"
+	}	
+//clan arena count
+	itemDef {
+		name "clanArena"
+		rect 2 2 21 11
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+		cvartest g_gametype
+		showcvar { "4" }
+		background "ui/assets/score/ca_score_blu.tga"
+	}
+	itemdef {
+		name "blueClanPlayers"
+		//ownerdrawflag CG_SHOW_CLAN_ARENA
+		ownerdraw CG_BLUE_CLAN_PLYRS  
+		rect 14 11 136 40
+		visible 1
+		textscale .18
+		forecolor 1 1 1 0.65
+		decoration
+	}
+
+//	ctf icons
+	itemDef {
+		name "f"
+		rect 2 2 11 11
+		visible 1
+		bordercolor 1 1 1 .75
+		decoration	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_blue.tga"
+	}
+	itemDef {
+		name "blueflag"
+		rect 2 2 11 11
+		visible 1
+		decoration    
+		ownerdrawflag CG_SHOW_CTF                    	
+		ownerdraw CG_BLUE_FLAGSTATUS
+	}
+	itemDef {
+		name "oneflagstatus"
+		rect 2 2 11 11
+		visible 1
+		decoration                	
+		ownerdraw CG_ONEFLAG_STATUS 
+	}
+
+}
+
+
+// FFA SCORE - FIRST PLACE 
+menuDef {
+	name "FFA1STPlace"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect 269 57 50 16
+	ownerdrawflag CG_SHOW_ANYNONTEAMGAME
+	//top frame - trail
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 0.25
+		background "ui/assets/hud/teamonl.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 0.25
+		background "ui/assets/hud/teamonm.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 0.25
+		background "ui/assets/hud/teamonr.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}		
+
+	//top frame - lead
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 .75 0 0.95
+		background "ui/assets/hud/teamonl.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 .75 0 0.95
+		background "ui/assets/hud/teamonm.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 .75 0 0.95
+		background "ui/assets/hud/teamonr.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}	
+
+	itemDef {
+		name "1st place"
+		visible 1
+		rect -1597 13 1640 40
+		textscale .26
+		ownerdraw CG_1ST_PLACE_SCORE
+		decoration
+	}	
+}
+
+// FFA SCORE - SECOND PLACE 
+menuDef {
+	name "FFATrailing"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect 321 57 50 16
+	ownerdrawflag CG_SHOW_ANYNONTEAMGAME
+	//top frame - trail
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 0.25
+		background "ui/assets/hud/teamonl.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 0.25
+		background "ui/assets/hud/teamonm.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 0.25
+		background "ui/assets/hud/teamonr.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}	
+
+	//top frame - lead
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 .75 0 0.95
+		background "ui/assets/hud/teamonl.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 .75 0 0.95
+		background "ui/assets/hud/teamonm.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}
+	itemDef {
+		name "SelfTLeft"
+		rect 34 0 16 16 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 .75 0 0.95
+		background "ui/assets/hud/teamonr.tga"
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}	
+	
+
+
+	itemDef {
+		name "1st place"
+		visible 1
+		rect -6597 13 6640 40
+		textscale .26
+		ownerdraw CG_2ND_PLACE_SCORE
+		decoration
+	}	
+}
+
+/* --- Timer --- */
+
+menuDef {
+	name "timer"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 275 12 118 36 
+	
+	itemDef {
+		name "timerIcon"
+		rect 0 0 0 0 
+		visible 1
+		decoration		
+		style 1
+		backcolor 1 1 1 1 
+		background "icons/icon_time.tga"
+	}
+
+	itemDef {
+		name "timerCounter"
+		rect 0 36 118 36 
+		visible 1
+		textalign 0
+		decoration
+		textstyle 3 
+		forecolor 1 1 1 1 
+		textscale 1 
+		ownerdraw CG_LEVELTIMER
+	}
+}
+
+/* --- graphical obits	 --- */
+menuDef {
+	name "obits"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 283 382 74 15 
+
+	itemDef {
+		name "obituaries"
+		rect 0 12 65 12
+		visible 1
+		textscale .22
+		ownerdraw CG_PLAYER_OBIT	
+	}
+}
+
+
+
+/* --- powerup indicator --- */
+menuDef {
+	name "powerupIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 300 263 41 18 
+	
+	itemDef {
+		name "powerupIndicatorArea"
+		rect 0 2 12 12 
+		visible 1
+		decoration
+		textscale 0.4 
+		forecolor 1 1 1 1 
+		textstyle 3
+		ownerdraw CG_AREA_POWERUP
+		special 29 
+		align HUD_HORIZONTAL 
+	}
+}
+
+/* --- Flag indicator --- */
+
+//red player has blue flag
+menuDef {
+	name "flagIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 308 82 24 24 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+	
+	itemDef {
+		name "playerRect"
+		rect 0 0 24 24 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG
+	}
+
+	itemDef {
+      	name "flag"
+        rect 2 2 20 20 
+		visible 1
+		decoration
+		style 1
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG  
+		backcolor 0.2 0.35 1 0.9
+		background "ui/assets/statusbar/flag_in_base"
+	}
+}
+
+//blue player has red flag
+menuDef {
+	name "flagIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 308 82 24 24 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+	
+	itemDef {
+		name "playerRect"
+		rect 0 0 24 24 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG
+	}
+
+	itemDef {
+      	name "flag"
+        rect 2 2 20 20 
+		visible 1
+		decoration
+		style 1
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG  
+		backcolor 1 0 0 0.9
+		background "ui/assets/statusbar/flag_in_base"
+	}
+}
+
+/* --- CTF Powerup indicator --- */
+//useable pickups
+menuDef {
+	name "CTFPowerupIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 275 82 24 24 
+	
+	itemDef {
+      	name "CTFPOWERUP"
+		rect 0 0 24 24 
+		visible 1
+		decoration
+		ownerdraw CG_CTF_POWERUP
+	}
+}
+
+/* --- Usable player item --- */
+menuDef {
+	name "playerItem"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 341 82 24 24 
+
+	itemDef {
+      	name "playerItemIcon"
+      	rect 0 0 24 24 
+		visible 1
+		decoration
+		ownerdraw CG_PLAYER_ITEM  
+	}
+}
+
+
+
+/*
+*/
+/* --- Armor bar --- */
+menuDef {
+	name "skillRating"
+	visible MENU_TRUE
+	rect 12 468 62 6 
+	ownerdrawflag CG_SHOW_IF_WARMUP
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 20"
+		cvarTest "sv_skillrating"
+		showCvar {"0"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 21"
+		cvarTest "sv_skillrating"
+		showCvar {"1"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 22"
+		cvarTest "sv_skillrating"
+		showCvar {"2"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 23"
+		cvarTest "sv_skillrating"
+		showCvar {"3"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 24"
+		cvarTest "sv_skillrating"
+		showCvar {"4"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 25"
+		cvarTest "sv_skillrating"
+		showCvar {"5"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 26"
+		cvarTest "sv_skillrating"
+		showCvar {"6"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 27"
+		cvarTest "sv_skillrating"
+		showCvar {"7"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 28"
+		cvarTest "sv_skillrating"
+		showCvar {"8"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 29"
+		cvarTest "sv_skillrating"
+		showCvar {"9"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 210"
+		cvarTest "sv_skillrating"
+		showCvar {"10"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 211"
+		cvarTest "sv_skillrating"
+		showCvar {"11"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 212"
+		cvarTest "sv_skillrating"
+		showCvar {"12"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 213"
+		cvarTest "sv_skillrating"
+		showCvar {"13"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 214"
+		cvarTest "sv_skillrating"
+		showCvar {"14"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 215"
+		cvarTest "sv_skillrating"
+		showCvar {"15"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 216"
+		cvarTest "sv_skillrating"
+		showCvar {"16"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 217"
+		cvarTest "sv_skillrating"
+		showCvar {"17"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 218"
+		cvarTest "sv_skillrating"
+		showCvar {"18"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 219"
+		cvarTest "sv_skillrating"
+		showCvar {"19"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 220"
+		cvarTest "sv_skillrating"
+		showCvar {"20"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 221"
+		cvarTest "sv_skillrating"
+		showCvar {"21"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 222"
+		cvarTest "sv_skillrating"
+		showCvar {"22"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 223"
+		cvarTest "sv_skillrating"
+		showCvar {"23"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 224"
+		cvarTest "sv_skillrating"
+		showCvar {"24"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 225"
+		cvarTest "sv_skillrating"
+		showCvar {"25"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 226"
+		cvarTest "sv_skillrating"
+		showCvar {"26"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 227"
+		cvarTest "sv_skillrating"
+		showCvar {"27"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 228"
+		cvarTest "sv_skillrating"
+		showCvar {"28"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 229"
+		cvarTest "sv_skillrating"
+		showCvar {"29"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 230"
+		cvarTest "sv_skillrating"
+		showCvar {"30"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 231"
+		cvarTest "sv_skillrating"
+		showCvar {"31"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 232"
+		cvarTest "sv_skillrating"
+		showCvar {"32"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 233"
+		cvarTest "sv_skillrating"
+		showCvar {"33"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 334"
+		cvarTest "sv_skillrating"
+		showCvar {"34"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 335"
+		cvarTest "sv_skillrating"
+		showCvar {"35"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 336"
+		cvarTest "sv_skillrating"
+		showCvar {"36"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 337"
+		cvarTest "sv_skillrating"
+		showCvar {"37"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 338"
+		cvarTest "sv_skillrating"
+		showCvar {"38"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 339"
+		cvarTest "sv_skillrating"
+		showCvar {"39"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 340"
+		cvarTest "sv_skillrating"
+		showCvar {"40"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 341"
+		cvarTest "sv_skillrating"
+		showCvar {"41"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 342"
+		cvarTest "sv_skillrating"
+		showCvar {"42"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 343"
+		cvarTest "sv_skillrating"
+		showCvar {"43"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 344"
+		cvarTest "sv_skillrating"
+		showCvar {"44"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 345"
+		cvarTest "sv_skillrating"
+		showCvar {"45"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 346"
+		cvarTest "sv_skillrating"
+		showCvar {"46"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 347"
+		cvarTest "sv_skillrating"
+		showCvar {"47"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 348"
+		cvarTest "sv_skillrating"
+		showCvar {"48"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 349"
+		cvarTest "sv_skillrating"
+		showCvar {"49"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 350"
+		cvarTest "sv_skillrating"
+		showCvar {"50"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 351"
+		cvarTest "sv_skillrating"
+		showCvar {"51"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 352"
+		cvarTest "sv_skillrating"
+		showCvar {"52"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 353"
+		cvarTest "sv_skillrating"
+		showCvar {"53"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 354"
+		cvarTest "sv_skillrating"
+		showCvar {"54"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 355"
+		cvarTest "sv_skillrating"
+		showCvar {"55"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 356"
+		cvarTest "sv_skillrating"
+		showCvar {"56"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 357"
+		cvarTest "sv_skillrating"
+		showCvar {"57"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 358"
+		cvarTest "sv_skillrating"
+		showCvar {"58"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 359"
+		cvarTest "sv_skillrating"
+		showCvar {"59"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 360"
+		cvarTest "sv_skillrating"
+		showCvar {"60"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 361"
+		cvarTest "sv_skillrating"
+		showCvar {"61"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 362"
+		cvarTest "sv_skillrating"
+		showCvar {"62"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 363"
+		cvarTest "sv_skillrating"
+		showCvar {"63"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 364"
+		cvarTest "sv_skillrating"
+		showCvar {"64"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 365"
+		cvarTest "sv_skillrating"
+		showCvar {"65"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 366"
+		cvarTest "sv_skillrating"
+		showCvar {"66"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 167"
+		cvarTest "sv_skillrating"
+		showCvar {"67"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 168"
+		cvarTest "sv_skillrating"
+		showCvar {"68"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 169"
+		cvarTest "sv_skillrating"
+		showCvar {"69"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 170"
+		cvarTest "sv_skillrating"
+		showCvar {"70"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 171"
+		cvarTest "sv_skillrating"
+		showCvar {"71"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 172"
+		cvarTest "sv_skillrating"
+		showCvar {"72"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 173"
+		cvarTest "sv_skillrating"
+		showCvar {"73"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 174"
+		cvarTest "sv_skillrating"
+		showCvar {"74"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 175"
+		cvarTest "sv_skillrating"
+		showCvar {"75"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 176"
+		cvarTest "sv_skillrating"
+		showCvar {"76"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 177"
+		cvarTest "sv_skillrating"
+		showCvar {"77"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 178"
+		cvarTest "sv_skillrating"
+		showCvar {"78"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 179"
+		cvarTest "sv_skillrating"
+		showCvar {"79"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 180"
+		cvarTest "sv_skillrating"
+		showCvar {"80"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 181"
+		cvarTest "sv_skillrating"
+		showCvar {"81"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 182"
+		cvarTest "sv_skillrating"
+		showCvar {"82"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 183"
+		cvarTest "sv_skillrating"
+		showCvar {"83"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 184"
+		cvarTest "sv_skillrating"
+		showCvar {"84"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 185"
+		cvarTest "sv_skillrating"
+		showCvar {"85"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 186"
+		cvarTest "sv_skillrating"
+		showCvar {"86"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 187"
+		cvarTest "sv_skillrating"
+		showCvar {"87"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 188"
+		cvarTest "sv_skillrating"
+		showCvar {"88"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 189"
+		cvarTest "sv_skillrating"
+		showCvar {"89"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 190"
+		cvarTest "sv_skillrating"
+		showCvar {"90"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 191"
+		cvarTest "sv_skillrating"
+		showCvar {"91"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 192"
+		cvarTest "sv_skillrating"
+		showCvar {"92"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 193"
+		cvarTest "sv_skillrating"
+		showCvar {"93"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 194"
+		cvarTest "sv_skillrating"
+		showCvar {"94"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 195"
+		cvarTest "sv_skillrating"
+		showCvar {"95"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 196"
+		cvarTest "sv_skillrating"
+		showCvar {"96"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 197"
+		cvarTest "sv_skillrating"
+		showCvar {"97"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 198"
+		cvarTest "sv_skillrating"
+		showCvar {"98"}
+	}
+	itemDef {
+		visible 1
+		textstyle 0 
+		textscale 0.18 
+		forecolor 1 1 1 1 
+		text "Skill rating: 199"
+		cvarTest "sv_skillrating"
+		showCvar {"99"}
+	}
+}
+
+
+/* --- rectangle box --- */
+menuDef {
+	name "box"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 324 443 2 24 
+	
+
+	itemDef {
+		name "boxBackground"
+		rect 0 0  2 24 
+		visible 1
+		style WINDOW_STYLE_FILLED
+		ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+		backcolor 1 1 1 0.8 
+		 
+	}
+	
+	itemDef {
+		name "boxBackground"
+		rect 0 0  2 24 
+		visible 1
+		style WINDOW_STYLE_FILLED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+		backcolor 0.4 0 0 0.8 
+		 
+	}
+	
+	itemDef {
+		name "boxBackground"
+		rect 0 0  2 24 
+		visible 1
+		style WINDOW_STYLE_FILLED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+		backcolor 0 0 0.4 0.8 
+		 
+	}		
+}
+
+
+/* --- rectangle box --- */
+menuDef {
+	name "chatArea"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 12 287 616 100 
+	
+
+	itemDef {
+		name "boxBackground"
+		rect 0 0  616 100 
+		visible 1
+		style WINDOW_STYLE_FILLED
+		ownerdrawflag CG_SHOW_IF_CHAT_VISIBLE
+		backcolor 0 0 0 0 
+		 
+	}
+
+    itemdef {
+		name chatWindow
+		ownerdraw CG_AREA_NEW_CHAT
+		rect 0 -22 616 120 
+		visible 1
+		decoration
+	}
+}
+
+
+
+//=================================================================================
+
+menuDef {
+name "FLAG warnings" 
+visible 1 
+rect -35 400 120 40
+
+//US
+itemDef {
+name "text YOUR TEAM GOT ENEMYS FLAG"
+textalign ITEM_ALIGN_LEFT
+rect 40 43 23 23
+visible 1
+decoration
+forecolor 0 0 0 .5
+textstyle 3
+textscale .5
+text "GOTTA GO!"
+ownerdrawflag CG_SHOW_YOURTEAMHASENEMYFLAG
+}
+
+itemDef {
+name "text YOUR TEAM GOT ENEMYS FLAG"
+textalign ITEM_ALIGN_LEFT
+rect 40 43 23 23
+visible 1
+visible 1
+decoration
+forecolor .04 .8 .04 1
+textstyle 1
+textscale .5
+text "GOTTA GO!"
+ownerdrawflag CG_SHOW_YOURTEAMHASENEMYFLAG
+} 
+
+//THEM
+
+itemDef {
+name "text ENEMY GOT YOUR FLAG"
+textalign ITEM_ALIGN_LEFT
+rect 40 70 23 23
+visible 1
+decoration
+forecolor 0 0 0 .5
+textstyle 3
+textscale .5
+text "FINISH HIM!"
+ownerdrawflag CG_SHOW_OTHERTEAMHASFLAG
+}
+
+itemDef {
+name "text ENEMY GOT YOUR FLAG"
+textalign ITEM_ALIGN_LEFT
+rect 40 70 23 23
+visible 1
+decoration
+forecolor .9 .15 .15 1
+textstyle 1
+textscale .5
+text "FINISH HIM!"
+ownerdrawflag CG_SHOW_OTHERTEAMHASFLAG
+}
+
+}
+
+assetGlobalDef
+      {
+        font "fonts/font" 20
+            smallFont "fonts/smallfont" 20
+            bigFont "fonts/bigfont" 48
+      }
