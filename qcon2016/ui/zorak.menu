@@ -1,0 +1,774 @@
+#include "ui/menudef.h"
+
+  /* --- Timer --- */
+
+menuDef {
+	name "timer"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 270 138 104 36 
+	
+	itemDef {
+		name "timerIcon"
+		rect 0 0 0 0 
+		visible 1
+		decoration		
+		style 1
+		backcolor 1 1 1 1 
+		background "icons/icon_time.tga"
+	}
+
+	itemDef {
+		name "timerCounter"
+		rect 0 36 106 36 
+		visible 1
+		textalign 0
+		decoration
+		textstyle 3 
+		forecolor 1 1 1 1 
+		textscale 1 
+		ownerdraw CG_LEVELTIMER
+	}
+}
+
+/* --- Health indicator --- */
+
+menuDef {
+	name "healthIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 90 410 127 36 
+
+	itemDef {
+		name "healthIndicatorCritical"
+		rect -3 -1 38 38 
+		visible 1
+		decoration
+		style 3
+		ownerdrawflag CG_SHOW_HEALTHCRITICAL
+		background "ui/assets/hud/healthalert"
+	}
+	
+	itemDef {
+		name "healthIndicatorIcon" 
+		rect 0 14 32 32 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 1 
+		background "ui/assets/hud/health.tga"
+		ownerdraw CG_TEAM_COLORIZED 
+	}
+	
+	itemDef {
+		name "healthIndicatorCounter"
+		rect 42 0 104 36 
+		visible 1
+		textalign 0
+		decoration
+		textstyle 3 
+		forecolor 1 1 1 1 
+		textscale 1 
+		ownerdraw CG_PLAYER_HEALTH
+		addColorRange -999 25 1 0 0 1 
+		addColorRange 26 100 1 1 1 1 
+		addColorRange 101 999 1 1 1 1 
+	}
+}
+
+/* --- Armor indicator --- */
+menuDef {
+	name "armorIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 401 410 146 36 
+
+	itemDef {
+		name "armorIndicatorIcon" 
+		rect 0 14 32 32 
+		visible 1
+		decoration
+		style 1
+		backcolor 1 1 1 1 
+		background "ui/assets/hud/armor.tga"
+		ownerdraw CG_TEAM_COLORIZED 
+	}
+
+
+
+	itemDef {
+		name "armorIndicatorCounter" 
+		rect 42 0 104 36 
+		visible 1
+		textalign 0
+		decoration
+		textstyle 3 
+		forecolor 1 1 1 1 
+		textscale 1 
+		ownerdraw CG_PLAYER_ARMOR_VALUE
+		addColorRange -999 25 1 0 0 1 
+		addColorRange 26 100 1 1 1 1 
+		addColorRange 101 999 1 1 1 1 
+	}
+}
+
+/* --- Ammo indicator --- */
+menuDef {
+	name "ammoIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 245 410 146 36 // area
+
+	itemDef {
+		name "ammoIndicatorIcon" 
+		rect 0 14 32 32 
+		visible 1
+		decoration
+		ownerdraw CG_PLAYER_AMMO_ICON
+	}
+
+	itemDef {
+		name "ammoIndicatorCounter"
+		rect 42 0 104 36 
+		visible 1
+		textalign 0
+		decoration
+		textstyle 3 
+		forecolor 1 1 1 1 
+		textscale 1 
+		ownerdraw CG_PLAYER_AMMO_VALUE		
+		addColorRange -999 5 1 0 0 1 
+		addColorRange 6 100 1 1 1 1 
+		addColorRange 101 999 1 1 1 1 
+	}
+}
+
+/* --- powerup indicator --- */
+menuDef {
+	name "powerupIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 570 212 62 28 
+	
+	itemDef {
+		name "powerupIndicatorArea"
+		rect 0 0 24 24 
+		visible 1
+		decoration
+		textscale 0.55 
+		forecolor 1 1 1 1 
+		textstyle 3
+		ownerdraw CG_AREA_POWERUP
+		special 4 
+		align HUD_VERTICAL 
+	}
+}
+
+/* --- TOP LEFT SCORE BOX --- */
+menuDef {
+	name "ScoreFrame"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect 6 7 32 256
+//Score Frame BG, can be scaled wider if needed to make more room for names
+	itemDef {
+     	name "scoreboxl"
+		rect -1.5 -5.5 8 63
+		visible 1
+		decoration
+		backcolor 1 1 1 0.57
+		style 1
+		background "ui/assets/hud/scoreboxl2.tga"
+	}
+	itemDef {
+     	name "scorebox2"
+		rect 6.5 -5.5 167 63 
+		visible 1
+		decoration
+		backcolor 1 1 1 0.57
+		style 1
+		background "ui/assets/hud/scoreboxm.tga"
+	}
+	itemDef {
+     	name "scorebox3"
+		rect 173.5 -5.5 8 63 
+		visible 1
+		decoration
+		backcolor 1 1 1 0.57
+		style 1
+		background "ui/assets/hud/scoreboxr.tga"
+	}
+//GAMETYPE ICON
+	itemDef {
+     	name "scorebox2a"
+		rect 0.5 -2 28 36 
+		visible 1
+		decoration
+		backcolor 1 1 1 1
+		style 1
+		background "ui/assets/score/btn.tga"
+	}
+	itemDef {
+		name "gameType"
+		rect 6 3 18 18
+		style 0
+		backcolor 1 1 1 1
+		ownerdraw CG_GAME_TYPE_ICON
+		visible 1
+		decoration
+	}	
+//WIN VALUE
+	itemDef {
+      	name "WinLimit"
+      	textalign 1
+        rect 7 33 40 12
+		visible 1
+    	decoration
+		forecolor 1 1 1 0.6
+		textscale .24
+		ownerdraw CG_CAPFRAGLIMIT 
+	}
+}
+
+// RED TEAM BAR TOP
+menuDef {
+	name "RedFrameTeam"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect  6 7 32 256
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE// AND CG_SHOW_ANYNONTEAMGAME
+
+	//red team flag alert - top left
+	itemDef {
+     	name "TeamRLeft"
+		rect 30 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/rteambgl.tga"
+		ownerdrawflag CG_SHOW_RED_TEAM_HAS_BLUEFLAG
+	}
+	//red team flag alert - bottom right
+	itemDef {
+     	name "TeamRLeft"
+		rect 50 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/rteambgr.tga"
+		ownerdrawflag CG_SHOW_RED_TEAM_HAS_BLUEFLAG
+	}
+		
+	//clan arena count
+	itemDef {
+		name "clanArena"
+		rect 32 4 21 11
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+	    cvartest g_gametype
+		showcvar { 3,4 }
+		background "ui/assets/score/ca_score_red.tga"
+	}
+    itemdef {
+	    name "redClanPlayers"
+//	    ownerdrawflag CG_SHOW_CLAN_ARENA
+	    ownerdraw CG_RED_CLAN_PLYRS  
+   	    rect 44 13 136 40
+   	    visible 1
+	    textscale .18
+	    forecolor 1 1 1 0.65
+	    decoration
+	}
+	itemDef {
+		name "f"
+		rect 36 3 13 13
+		visible 1
+		bordercolor 1 1 1 1
+		decoration	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_red.tga"
+	}
+	itemDef {
+		name "f"
+		rect 36 3 13 13
+		visible 1
+		decoration
+		ownerdrawflag CG_SHOW_CTF                       
+		ownerdraw CG_RED_FLAGSTATUS
+	}
+}
+
+// RED TEAM BAR BOTTOM
+menuDef {
+	name "RedFrameTeam"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect  6 23 32 256
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE// AND CG_SHOW_ANYNONTEAMGAME
+
+	//red team flag alert - top left
+	itemDef {
+     	name "TeamRLeft"
+		rect 30 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/rteambgl.tga"
+		ownerdrawflag CG_SHOW_RED_TEAM_HAS_BLUEFLAG
+	}
+	//red team flag alert - bottom right
+	itemDef {
+     	name "TeamRLeft"
+		rect 50 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/rteambgr.tga"
+		ownerdrawflag CG_SHOW_RED_TEAM_HAS_BLUEFLAG
+	}
+		
+	//clan arena count
+	itemDef {
+		name "clanArena"
+		rect 32 4 21 11
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+	    cvartest g_gametype
+		showcvar { 3,4 }
+		background "ui/assets/score/ca_score_red.tga"
+	}
+    itemdef {
+	    name "redClanPlayers"
+//	    ownerdrawflag CG_SHOW_CLAN_ARENA
+	    ownerdraw CG_RED_CLAN_PLYRS  
+   	    rect 44 13 136 40
+   	    visible 1
+	    textscale .18
+	    forecolor 1 1 1 0.65
+	    decoration
+	}
+	itemDef {
+		name "f"
+		rect 36 3 13 13
+		visible 1
+		bordercolor 1 1 1 1
+		decoration	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_red.tga"
+	}
+	itemDef {
+		name "f"
+		rect 36 3 13 13
+		visible 1
+		decoration
+		ownerdrawflag CG_SHOW_CTF                       
+		ownerdraw CG_RED_FLAGSTATUS
+	}
+}
+// BLUE TEAM BAR TOP
+menuDef {
+	name "BlueFrameTeam"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect  6 7 32 256
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE// AND CG_SHOW_ANYNONTEAMGAME
+
+	//blue team flag alert - top left
+	itemDef {
+     	name "TeamRLeft"
+		rect 30 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/bteambgl.tga"
+		ownerdrawflag CG_SHOW_BLUE_TEAM_HAS_REDFLAG
+	}
+	//blue team flag alert - bottom right
+	itemDef {
+     	name "TeamRLeft"
+		rect 50 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/bteambgr.tga"
+		ownerdrawflag CG_SHOW_BLUE_TEAM_HAS_REDFLAG
+	}
+		
+	//clan arena count
+	itemDef {
+		name "clanArena"
+		rect 32 4 21 11
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+	    cvartest g_gametype
+		showcvar { 3,4 }
+		background "ui/assets/score/ca_score_blu.tga"
+	}
+    	itemdef {
+	    name "blueClanPlayers"
+	    ownerdrawflag CG_SHOW_CLAN_ARENA
+	    ownerdraw CG_BLUE_CLAN_PLYRS  
+   	    rect 44 13 136 40
+   	    visible 1
+	    textscale .18
+	    forecolor 1 1 1 0.65
+	    decoration
+	}
+	itemDef {
+		name "f"
+		rect 36 3 13 13
+		visible 1
+		bordercolor 1 1 1 .75
+		decoration	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_blue.tga"
+	}
+	itemDef {
+		name "blueflag"
+		rect 36 3 13 13
+		visible 1
+		decoration    
+		ownerdrawflag CG_SHOW_CTF                    	
+		ownerdraw CG_BLUE_FLAGSTATUS
+	}
+	itemDef {
+		name "oneflagstatus"
+		rect 36 3 13 13
+		visible 1
+		decoration                	
+		ownerdraw CG_ONEFLAG_STATUS 
+	}
+}
+// BLUE TEAM BAR BOTTOM
+menuDef {
+	name "BlueFrameTeam"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect  6 23 32 256
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE// AND CG_SHOW_ANYNONTEAMGAME
+
+	//red team flag alert - align to right
+	itemDef {
+     	name "TeamRLeft"
+		rect 30 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/bteambgl.tga"
+		ownerdrawflag CG_SHOW_BLUE_TEAM_HAS_REDFLAG
+	}
+	//red team flag alert - align to right
+	itemDef {
+     	name "TeamRLeft"
+		rect 50 2 128 15 
+		visible 1
+		decoration
+		backcolor 1 0 0 0.3
+		style 1
+		background "ui/assets/hud/bteambgr.tga"
+		ownerdrawflag CG_SHOW_BLUE_TEAM_HAS_REDFLAG
+	}
+	
+	//clan arena count
+	itemDef {
+		name "clanArena"
+		rect 32 4 21 11
+		visible 1
+		backcolor 1 1 1 1
+		decoration	
+		style 1
+	    cvartest g_gametype
+		showcvar { 3,4 }
+		background "ui/assets/score/ca_score_blu.tga"
+	}
+    	itemdef {
+	    name "blueClanPlayers"
+	    ownerdrawflag CG_SHOW_CLAN_ARENA
+	    ownerdraw CG_BLUE_CLAN_PLYRS  
+   	    rect 44 13 136 40
+   	    visible 1
+	    textscale .18
+	    forecolor 1 1 1 0.65
+	    decoration
+	}
+	itemDef {
+		name "f"
+		rect 36 3 13 13
+		visible 1
+		bordercolor 1 1 1 .75
+		decoration	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_blue.tga"
+	}
+	itemDef {
+		name "blueflag"
+		rect 36 3 13 13
+		visible 1
+		decoration    
+		ownerdrawflag CG_SHOW_CTF                    	
+		ownerdraw CG_BLUE_FLAGSTATUS
+	}
+	itemDef {
+		name "oneflagstatus"
+		rect 36 3 13 13
+		visible 1
+		decoration                	
+		ownerdraw CG_ONEFLAG_STATUS 
+	}
+}
+
+// DM/TOURNAMENT BAR
+menuDef {
+	name "SelfFrameHighlights"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect  6 7 32 256
+
+	//self top highlight
+	itemDef {
+     	name "SelfTLeft"
+		rect 30 2 16 16 
+		visible 1
+		decoration
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+     	name "SelfTMid"
+		rect 46 2 116 16 
+		visible 1
+		decoration
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+     	name "SelfTLeft"
+		rect 162 2 16 16 
+		visible 1
+		decoration
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+	//self bottom highlight
+	itemDef {
+     	name "SelfBLeft"
+	rect 30 18 16 16 
+	visible 1
+   	decoration
+	ownerdraw CG_TEAM_COLORIZED
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	style 1
+	background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+     	name "SelfBMid"
+	rect 46 18 116 16 
+	visible 1
+   	decoration
+	ownerdraw CG_TEAM_COLORIZED
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	style 1
+	background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+     	name "SelfBLeft"
+	rect 162 18 16 16 
+	visible 1
+   	decoration
+	ownerdraw CG_TEAM_COLORIZED
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	style 1
+	background "ui/assets/hud/teamonr.tga"
+	}
+}
+
+// this is the item def for the 1st place text
+menuDef {
+	name "scores"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect  6 7 120 40
+	
+    itemdef {
+	    name "1stplace"
+	    ownerdraw CG_1ST_PLACE_SCORE
+   	    rect 38 14 136 40
+   	    visible 1
+		textscale .22
+	    decoration
+	}
+
+// this is the item def for the 2nd place text
+    itemdef {
+	    name "2ndplace"
+	    ownerdraw CG_2ND_PLACE_SCORE
+   	    rect 38 30 136 40
+   	    visible 1
+		textscale .22
+	    decoration
+	}
+}
+
+/* --- Usable player item --- */
+menuDef {
+	name "playerItem"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 616 281 16 16 
+
+	itemDef {
+      	name "playerItemIcon"
+      	rect 0 0 16 16 
+		visible 1
+		decoration
+		ownerdraw CG_PLAYER_ITEM  
+	}
+}
+
+
+
+/* --- CTF Powerup indicator --- */
+//useable pickups
+menuDef {
+	name "CTFPowerupIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 63 450 16 16 
+	
+	itemDef {
+      	name "CTFPOWERUP"
+		rect 0 0 16 16 
+		visible 1
+		decoration
+		ownerdraw CG_CTF_POWERUP
+	}
+}
+
+/* --- graphical obits	 --- */
+menuDef {
+	name "obits"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 299 7 74 15 
+
+	itemDef {
+		name "obituaries"
+		rect 0 12 65 12
+		visible 1
+		textscale .22
+		ownerdraw CG_PLAYER_OBIT	
+	}
+}
+
+
+
+/* --- Flag indicator --- */
+
+//red player has blue flag
+menuDef {
+	name "flagIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 20 434 32 32 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+	
+	itemDef {
+		name "playerRect"
+		rect 0 0 32 32 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG
+	}
+
+	itemDef {
+      	name "flag"
+        rect 3 3 26 26 
+		visible 1
+		decoration
+		style 1
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG  
+		backcolor 0.2 0.35 1 0.9
+		background "ui/assets/statusbar/flag_in_base"
+	}
+}
+
+//blue player has red flag
+menuDef {
+	name "flagIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 20 434 32 32 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+	
+	itemDef {
+		name "playerRect"
+		rect 0 0 32 32 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG
+	}
+
+	itemDef {
+      	name "flag"
+        rect 3 3 26 26 
+		visible 1
+		decoration
+		style 1
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG  
+		backcolor 1 0 0 0.9
+		background "ui/assets/statusbar/flag_in_base"
+	}
+}
+
+
+/* --- rectangle box --- */
+menuDef {
+	name "chatArea"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 0 301 640 120 
+	
+
+	itemDef {
+		name "boxBackground"
+		rect 0 0  640 120 
+		visible 1
+		style WINDOW_STYLE_FILLED
+		ownerdrawflag CG_SHOW_IF_CHAT_VISIBLE
+		backcolor 0 0 0 0.75 
+		background "ui/assets/hud/chatm.tga" 
+	}
+
+    itemdef {
+		name chatWindow
+		ownerdraw CG_AREA_NEW_CHAT
+		rect 3 -5 634 120 
+		visible 1
+		decoration
+	}
+}
