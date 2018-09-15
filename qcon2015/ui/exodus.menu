@@ -1,0 +1,696 @@
+//http://www.funender.com/quake/files
+// injx's QuakeLive HUD 2008/09/23
+//
+// Latest version at: http://www.funender.com/quake/files/injx/injxqlhud.zip
+//
+//         /cg_hudFiles "ui/injx.cfg"
+//         /loadhud
+//``
+#include "ui/menudef.h"
+
+{
+	assetGlobalDef {
+		cursor "ui/assets/3_cursor3.png"			// cursor	
+		gradientBar "ui/assets/gradientbar2.png"	// gradient bar
+		fadeClamp 1.0					// sets the fadeup alpha
+		fadeCycle 1					// how often fade happens in milliseconds
+		fadeAmount 0.1					// amount to adjust alpha per cycle
+
+		shadowX  5				// x amount for shadow offset
+		shadowY  5					// y amount for shadow offset
+		shadowColor 0.1 0.1 0.1 0.25			// shadow color
+
+		font "fonts/font" 24				// font
+		smallFont "fonts/smallfont" 16			// font
+		bigFont "fonts/bigfont" 48			// font
+	}
+
+  
+	//	Notification AREA	
+	menuDef {
+		name "msgsArea"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 250 2 66 32
+
+		itemdef {
+			name tourneyMsg
+			rect 0 0 32 32
+			style 1
+			background "sprites/foe2.png"
+			visible 1
+			ownerdrawflag CG_SHOW_IF_NOTICE_PRESENT
+			decoration
+			backcolor 1 1 1 1.0
+		}
+		
+		itemdef {
+			name gotMsg
+			rect 34 0 32 32
+			style 1
+			background "sprites/balloon4.png"
+			visible 1
+			ownerdrawflag CG_SHOW_IF_MSG_PRESENT
+			decoration
+			backcolor 1 1 1 1.0
+		}
+	}
+	
+//*****RACE HUD*****//
+
+	menuDef {	
+		name "RaceHUD"
+        widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 269 5 115 25
+		
+		itemDef {
+			name "raceBackground1"
+			rect 0 0 8 64 
+			visible 1
+			decoration
+			backcolor 1 1 1 0.5
+			style WINDOW_STYLE_FILLED
+			background "ui/assets/hud/scoreboxl2.tga"
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+		
+		itemDef {
+			name "raceBackground2"
+			rect 8 0 100 64 
+			visible 1
+			decoration
+			backcolor 1 1 1 0.5
+			style WINDOW_STYLE_FILLED
+			background "ui/assets/hud/scoreboxm.tga"
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+		
+		itemDef {
+			name "raceBackground3"
+			rect 108 0 8 64 
+			visible 1
+			decoration
+			backcolor 1 1 1 0.5
+			style WINDOW_STYLE_FILLED
+			background "ui/assets/hud/scoreboxr.tga"
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+	
+		itemDef {
+			name "raceStatus"
+			rect 58 22 110 15
+			visible 1
+			decoration
+			align 1
+			textscale 0.25
+			ownerdraw CG_RACE_STATUS
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+	
+		itemDef {
+			name "raceTimes"
+			rect 25 34 110 15
+			visible 1
+			decoration
+			align 0
+			textscale 0.25
+			ownerdraw CG_RACE_TIMES
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+	}
+
+//*****PLAYER HEALTH*****//
+
+	//health value/icon
+	menuDef {
+		name "Player"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 115 435 120 32
+	
+		itemDef {
+			name "health"
+			rect 0 6 32 32
+			visible 1
+			backcolor 1 1 1 1
+			decoration
+			style 1
+			background "models/players/keel/icon_sport.png"
+		}
+		
+		itemDef {
+			name "healthok"
+			rect 75 0 87 28
+			visible 1
+			align ITEM_ALIGN_CENTER
+			decoration
+			textstyle 3
+			forecolor 1 1 1 1
+			textscale 0.8
+			ownerdraw CG_PLAYER_HEALTH
+			addColorRange -999 33 1 0 0 1
+			addColorRange 34 100 1 1 1 1
+			addColorRange 101 999 0 1 0 1
+		}
+	}
+
+//*****AMMO*****//
+
+	menuDef {
+		name "Ammo"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 269 440 102 36
+		
+		itemDef {
+			name "a"
+			rect 0 0 36 36 
+			visible 1
+			decoration
+			ownerdraw CG_PLAYER_AMMO_ICON2D
+		}
+
+		itemDef {
+			name "a"
+			rect 75 0 66 22
+			visible 1
+			textstyle 3
+			align ITEM_ALIGN_CENTER
+			decoration
+			textscale 0.6
+			forecolor 1 1 1 1
+			ownerdraw CG_PLAYER_AMMO_VALUE
+			addColorRange -999 5 1 0 0 1
+		}
+	}
+	
+//*****ARMOR*****//
+	//armor value/icon
+	menuDef {
+		name "Armor"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE	
+		rect 410 435 120 32
+		
+		itemDef {
+			name "armor"
+			backcolor 1 1 1 1
+			rect 0 6 32 32 
+			visible 1
+			decoration
+			style 1
+			background "icons/iconr_yellow.png"
+		}
+		
+		itemDef {
+			name "armor2"
+			rect 75 0 87 28
+			visible 1
+			decoration
+			textstyle 3
+			textscale 0.8
+			align ITEM_ALIGN_CENTER
+			ownerdraw CG_PLAYER_ARMOR_VALUE 
+			addColorRange -999 100 1 1 1 1
+			addColorRange 101 999 0 1 0 1
+		}
+	}
+
+//GAME TIME
+	menuDef {
+		name "timerFrame"
+		widescreen WIDESCREEN_CENTER
+		rect 290 90 0 0
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		
+		itemDef {
+			name "Timer"
+			style 0
+			rect 0 0 84 20
+			visible 1
+			textstyle 3
+			decoration
+			forecolor 1 1 1 1
+			textscale 0.8
+			ownerdraw CG_LEVELTIMER
+		}
+		
+		itemDef {
+			name "roundTimer"
+			style 0
+			rect 16 24 56 20
+			visible 1
+			textstyle 3
+			decoration
+			forecolor 1 1 1 1
+			textscale 0.4
+			ownerdraw CG_ROUNDTIMER
+		}
+		
+		itemDef {
+			name "timerIcon"
+			rect 85 -19 20 20
+			style 0
+			backcolor 0 0 0 0.7
+			background "icons/icon_time.png"
+			visible 1
+			decoration
+		}
+		itemDef {
+			name "timerIcon"
+			rect 84 -20 20 20
+			style 0
+			backcolor 1 1 1 0.7
+			background "icons/icon_time.png"
+			visible 1
+			decoration
+		}
+		
+	}
+
+// CA
+	menuDef {
+		name "caFrame"
+		widescreen WIDESCREEN_RIGHT
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 600 148 48 32
+		
+		itemDef {
+			name "bgRed"
+			rect 8 0 32 16
+			visible 1
+			decoration
+			backcolor 1 0 0 0.25
+			ownerdrawflag CG_SHOW_CLAN_ARENA
+			style 1
+		}
+		
+		itemDef {
+			name "bgBlue"
+			rect 8 16 32 16
+			visible 1
+			decoration
+			backcolor 0 0 1 0.25
+			ownerdrawflag CG_SHOW_CLAN_ARENA
+			style 1
+		}
+		
+		//clan arena count
+		itemDef {
+			name "caRed"
+			rect 0 0 16 16
+			visible 1
+			backcolor 1 1 1 1
+			decoration	
+			style 1
+			ownerdrawflag CG_SHOW_CLAN_ARENA
+			background "models/players/bitterman/icon_red.png"
+		}
+		
+		itemDef {
+			name "caBlue"
+			rect 0 16 16 16
+			visible 1
+			backcolor 1 1 1 1
+			decoration	
+			style 1
+			ownerdrawflag CG_SHOW_CLAN_ARENA
+			background "models/players/bitterman/icon_blue.png"
+		}
+		
+		itemDef {
+			name "redClanPlayers"
+			ownerdrawflag CG_SHOW_CLAN_ARENA
+			ownerdraw CG_RED_CLAN_PLYRS  
+			rect 22 13 32 16
+			visible 1
+			align ITEM_ALIGN_CENTER
+			textscale .26
+			forecolor 1 1 1 1
+			decoration
+		}
+		
+		itemDef {
+			name "blueClanPlayers"
+			ownerdrawflag CG_SHOW_CLAN_ARENA
+			ownerdraw CG_BLUE_CLAN_PLYRS  
+			rect 22 29 136 40
+			visible 1
+			align ITEM_ALIGN_CENTER
+			textscale .26
+			forecolor 1 1 1 1
+			decoration
+		}
+	}
+
+	menuDef {
+		name "scoresFrame"
+		widescreen WIDESCREEN_RIGHT
+		rect 588 416 60 60
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		
+		itemDef {
+			name "redflag"
+			rect 0 0 20 20
+			visible 1
+			decoration
+			ownerdrawflag CG_SHOW_CTF                       
+			ownerdraw CG_RED_FLAGSTATUS
+		}
+		
+		itemDef {
+			name "blueflag"
+			rect 0 20 20 20
+			visible 1
+			decoration    
+			ownerdrawflag CG_SHOW_CTF                    	
+			ownerdraw CG_BLUE_FLAGSTATUS
+		}
+		
+		itemDef {
+			name "oneflagstatus"
+			rect 0 10 20 20
+			visible 1
+			decoration                	
+			ownerdraw CG_ONEFLAG_STATUS
+		}
+		
+		itemDef {
+			name "bgRed"
+			rect 20 0 32 20
+			visible 1
+			ownerdrawflag CG_SHOW_ANYTEAMGAME 
+			decoration
+			backcolor 1 0 0 0.25
+			style 1
+		}
+		
+		itemDef {
+			name "bgBlue"
+			rect 20 20 32 20
+			visible 1
+			ownerdrawflag CG_SHOW_ANYTEAMGAME 
+			decoration
+			backcolor 0 0 1 0.25
+			style 1
+		}
+		
+		itemDef {
+			name "bgLimit"
+			rect 20 40 32 20
+			visible 1
+			decoration
+			backcolor 0 0 0 0.25
+			style 1
+		}
+		
+		itemDef {
+			name "scoreLimit"
+			rect 37 56 32 20 
+			visible 1
+			decoration
+			textscale 0.3
+			align ITEM_ALIGN_CENTER
+			ownerdraw CG_CAPFRAGLIMIT
+			style 1
+		}
+		
+		itemdef {
+			name "scoreRed"
+			ownerdraw CG_RED_SCORE
+			ownerdrawflag CG_SHOW_ANYTEAMGAME 
+			rect 37 16 32 20
+			visible 1
+			textscale 0.3
+			align ITEM_ALIGN_CENTER
+			decoration
+		}
+		
+		itemdef {
+			name "scoreBlue"
+			ownerdraw CG_BLUE_SCORE
+			ownerdrawflag CG_SHOW_ANYTEAMGAME
+			rect 37 36 32 20
+			visible 1
+			textscale 0.3
+			align ITEM_ALIGN_CENTER
+			decoration
+		}
+
+		itemDef {
+			name "bg1st"
+			rect 20 0 32 20
+			visible 1
+			ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+			decoration
+			backcolor 0 0 0 0.25
+			style 1
+		}
+		
+		itemDef {
+			name "bg2nd"
+			rect 20 20 32 20
+			visible 1
+			ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+			decoration
+			backcolor 0 0 0 0.25
+			style 1
+		}
+			
+		itemdef {
+			name "1stplace"
+			ownerdraw CG_1STPLACE
+			ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+			rect 37 16 110 20
+			visible 1
+			textscale .3
+			decoration
+			align ITEM_ALIGN_CENTER
+		}
+
+		itemdef {
+			name "2ndplace"
+			ownerdraw CG_2NDPLACE
+			ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+			rect 37 36 110 20
+			visible 1
+			textscale .3
+			decoration
+			align ITEM_ALIGN_CENTER
+		}	
+	}
+
+//PowerUps
+	menuDef {
+		name "powerup"
+		widescreen WIDESCREEN_RIGHT
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 550 178 74 156
+
+		itemDef {
+			name "powerupArea"
+			rect 0 0 26 26
+			visible 1
+			decoration
+			textscale 0.73
+			textstyle 3
+			ownerdraw CG_AREA_POWERUP
+			special 0			// spacing
+			align HUD_VERTICAL
+		}
+	}
+
+
+//useable pickups
+	menuDef {
+		name "pickups"
+		widescreen WIDESCREEN_LEFT
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 0 412 32 64
+		
+		itemDef {
+			name "playeritem"
+			rect 0 0 32 32
+			visible 1
+			decoration
+			ownerdraw CG_PLAYER_ITEM  
+		}
+		
+		itemDef {
+			name "playeritem"
+			rect 32 0 32 32
+			visible 1
+			decoration
+			ownerdraw CG_CTF_POWERUP  
+		}
+
+		itemDef {
+			name "CTFPOWERUP"
+			rect 0 32 32 32
+			visible 1
+			decoration
+			ownerdraw CG_PLAYER_HASKEY
+		}
+	}
+
+//player has flag
+	menuDef {
+		name "playerHasFlag"
+		widescreen WIDESCREEN_LEFT
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 0 346 48 48    //53 430 48 48
+
+		itemDef {
+			name "flag"
+			rect 0 0 48 48
+			visible 1
+			decoration
+			style 1
+			ownerdraw CG_PLAYER_HASFLAG2D
+		}
+
+		itemDef {
+			name "skulls"
+			rect 0 0 48 48
+			visible 1
+			decoration
+			textaligny 12
+			textalignx 0
+			textscale 0.333
+			textstyle 3
+			ownerdraw CG_HARVESTER_SKULLS
+		}
+	}
+
+//	graphical obits	
+	menuDef {
+		name "obit area"
+		widescreen WIDESCREEN_LEFT
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 6 15 160 32
+
+		itemdef {
+			name hudObit
+			ownerdraw CG_PLAYER_OBIT
+			rect 0 0 160 32
+			visible 1
+			decoration
+			textscale .3
+		}
+	}
+
+//	chat area
+	menuDef {
+		name "chat area"
+		widescreen WIDESCREEN_LEFT
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 64 312 474 98
+		
+		itemDef {
+			name "chatBgLeft"
+			rect 0 0 16 98
+			visible 1
+			ownerdrawflag CG_SHOW_IF_CHAT_VISIBLE
+			decoration
+			backcolor 0 0 0 0.6
+			style 1
+			// background "ui/assets/hud/chatl.png"
+		}
+		
+		itemDef {
+			name "chatBgMid"
+			rect 16 0 442 98
+			visible 1
+			ownerdrawflag CG_SHOW_IF_CHAT_VISIBLE
+			decoration
+			backcolor 0 0 0 0.6
+			style 1
+			// background "ui/assets/hud/chatm.png"
+		}
+		
+		itemDef {
+			name "chatBgRight"
+			rect 458 0 16 98
+			visible 1
+			ownerdrawflag CG_SHOW_IF_CHAT_VISIBLE
+			decoration
+			backcolor 0 0 0 0.6
+			style 1
+			// background "ui/assets/hud/chatr.png"
+		}
+		
+		itemdef {
+			name chatWindow
+			ownerdraw CG_AREA_NEW_CHAT
+			rect 6 4 430 88
+			visible 1
+			decoration
+		}
+	}
+
+	menuDef {
+		name "Bars"
+		widescreen WIDESCREEN_STRETCH
+		fullScreen MENU_FALSE
+		visible MENU_TRUE	
+		rect 0 476 640 4
+		
+		itemDef {
+			name "healthFill100"
+			rect 0 0 242 4
+			visible 1
+			decoration
+			ownerdraw CG_PLAYER_HEALTH_BAR_100
+			style 1
+			background "ui/assets/hud/chatm.png"
+		}
+		
+		itemDef {
+			name "armorFill100"
+			rect 398 0 242 4
+			visible 1
+			decoration
+			forecolor 1 1 1 1
+			ownerdraw CG_PLAYER_ARMOR_BAR_100
+			style 1
+			background "ui/assets/hud/chatm.png"
+		}
+	}
+
+	/*
+	menuDef {
+		name "test"
+		fullScreen MENU_FALSE
+		visible MENU_TRUE	
+		rect 200 200 200 100
+		
+		itemDef {
+			name "t1"
+			rect 0 0 200 100
+			visible 1
+			decoration
+			forecolor 1 1 1 1
+			style 1
+		}	
+	}*/
+
+}

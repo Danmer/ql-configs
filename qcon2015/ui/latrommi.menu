@@ -1,0 +1,781 @@
+/*------------------------------------------------------------------------------------------------
+  ---- [l1nkin config] ---------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------*/
+
+#include "ui/menudef.h"
+
+/************************************************************************************** [Defs] ****/
+
+// team menu
+// 
+// defines from ui_shared.h
+
+assetGlobalDef {
+		cursor "ui/assets/3_cursor2"				// cursor	
+		gradientBar "ui/assets/gradientbar2.tga"	// gradient bar
+		fadeClamp 1.0								// sets the fadeup alpha
+		fadeCycle 1									// how often fade happens in milliseconds
+		fadeAmount 0.1								// amount to adjust alpha per cycle
+		shadowX  5									// x amount for shadow offset
+		shadowY  5									// y amount for shadow offset
+		shadowColor 0.1 0.1 0.1 0.25				// shadow color
+	   	font "fonts/font" 24						// font
+		smallFont "fonts/smallfont" 16				// font
+		bigFont "fonts/bigfont" 48					// font
+	}
+
+	
+	//*****AMMO*****//
+	
+	menuDef {
+		name "ammoIndicator"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 80 441 127 36 // area
+
+		itemDef {
+			name "ammoIndicatorIcon" 
+			rect 0 7 20 20
+			visible 1
+			decoration
+			ownerdraw CG_PLAYER_AMMO_ICON
+		}
+
+		itemDef {
+			name "ammoIndicatorCounter"
+			rect 60 -6 104 36 
+			visible 1
+			align ITEM_ALIGN_CENTER
+			decoration
+			textstyle 0 
+			forecolor 1 1 1 1 
+			textscale 0.8
+			ownerdraw CG_PLAYER_AMMO_VALUE		
+			addColorRange -999 5 1 0 0 1 
+			addColorRange 5 99 1 1 1 1 
+			addColorRange 100 999 1 1 1 1 
+		}
+	}
+	
+	//*****PLAYER HEALTH*****//
+	
+	menuDef {
+		name "healthIndicator"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 255 425 104 36 
+	
+		itemDef {
+			name "healthIndicatorIcon" 
+			rect 0 0 0 0 
+			visible 1
+			decoration
+			style 1
+			backcolor 1 1 1 0 
+			background "ui/assets/hud/health.tga"
+			ownerdraw CG_TEAM_COLORIZED 
+		}
+		
+		itemDef {
+			name "healthIndicatorCounter"
+			rect 0 0 104 36 
+			visible 1
+			align ITEM_ALIGN_CENTER
+			decoration
+			textstyle 0 
+			forecolor 1 0.8 0.2 1 
+			textscale 1 
+			ownerdraw CG_PLAYER_HEALTH
+			addColorRange -999 25 1 0 0 1 
+			addColorRange 26 100 1 0.8 0.2 1 
+			addColorRange 101 999 0 0.9 0.8 1 
+		}
+	}
+	
+	//*****PLAYER ARMOR*****//
+	
+	menuDef {
+		name "armorIndicator"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 385 425 104 36 
+
+		itemDef {
+			name "armorIndicatorIcon" 
+			rect 0 0 0 0 
+			visible 1
+			decoration
+			style 1
+			cvarTest "cg_draw3dIcons" 
+			showCvar {0}
+			background "icons/iconr_red"
+		}
+
+		itemDef {
+			name "armorIndicatorIcon" 
+			rect 0 0 0 0 
+			visible 1
+			decoration
+			style 1
+			cvarTest "cg_draw3dIcons" 
+			showCvar {1} 
+			ownerdraw CG_PLAYER_ARMOR_ICON 
+		}
+
+		itemDef {
+			name "armorIndicatorCounter" 
+			rect 0 0 104 36 
+			visible 1
+			align ITEM_ALIGN_CENTER
+			decoration
+			textstyle 0 
+			forecolor 0 0.9 0.8 1 
+			textscale 1 
+			ownerdraw CG_PLAYER_ARMOR_VALUE
+			addColorRange -999 25 1 0 0 1 
+			addColorRange 26 99 1 0.8 0.2 1 
+			addColorRange 100 999 0 0.9 0.8 1 
+		}
+	}
+	
+	//*****CLAN ARENA*****//
+	
+	menuDef {
+		name        "caFrame"
+		widescreen WIDESCREEN_LEFT
+		fullScreen  MENU_FALSE
+		visible     MENU_TRUE
+		rect        5 415 64 48
+		ownerdrawflag CG_SHOW_CLAN_ARENA
+
+		//*****CLAN ARENA STILL ALIVE COUNT*****//
+		
+		itemDef {
+			name          "playersleftBackground"
+			decoration
+			rect          0 35 102 18
+			visible       1
+			backcolor     0.8 0.8 0.8 0.2
+			style         2
+		}
+		
+		itemDef {
+			name          "redClanPlayers"
+			decoration
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+			ownerdraw     CG_RED_CLAN_PLYRS  
+			rect          72 50 136 40
+			visible       1
+			textalign     ITEM_ALIGN_RIGHT
+			textscale     .3
+			//forecolor     1 0.1 0.1 0.9
+			forecolor     1 0.1 0.1 0.9
+		}
+		
+		itemDef {
+			name          "blueClanPlayers"
+			decoration
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+			ownerdraw     CG_BLUE_CLAN_PLYRS  
+			rect          20 50 32 16
+			visible       1
+			textalign     ITEM_ALIGN_RIGHT
+			textscale     .3
+			forecolor     1 1 1 0.7
+		}
+		
+		itemDef {
+			name          "redClanPlayers"
+			decoration
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+			ownerdraw     CG_RED_CLAN_PLYRS  
+			rect          20 50 32 16
+			visible       1
+			textalign     ITEM_ALIGN_RIGHT
+			textscale     .3
+			forecolor     1 1 1 0.7
+		}
+		
+		itemDef {
+			name          "blueClanPlayers"
+			decoration
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+			ownerdraw     CG_BLUE_CLAN_PLYRS  
+			rect          72 50 136 40
+			visible       1
+			textalign     ITEM_ALIGN_RIGHT
+			textscale     .3
+			forecolor     1 0.1 0.1 0.9
+		}
+		
+		itemDef {
+			name          "ca_vs"
+   			rect          60 49 136 40
+   			visible       1
+			textalign     2
+			textscale     .3
+			forecolor     1 1 1 0.7
+			decoration
+			text          vs
+		}
+	}
+	
+	//*****SCORES TEAM*****//
+	
+	menuDef {
+		name          "scoresFrameTeam"
+		widescreen WIDESCREEN_RIGHT
+		rect          540 416 60 60
+		fullScreen    MENU_FALSE
+		visible       MENU_TRUE
+		ownerdrawflag CG_SHOW_ANYTEAMGAME
+		
+		//*****SCORE BACKGROUNDS*****//
+
+		itemDef {
+			name          "backgroundRed1"
+			decoration
+			rect          0 32 52 22
+			visible       1
+			ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE 
+			backcolor     0.8 0.1 0.1 0.6
+			style         1
+		}
+		
+		itemDef {
+			name          "backgroundBlue1"
+			decoration
+			rect          50 32 52 22
+			visible       1
+			ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+			backcolor     0.1 0.1 0.8 0.6
+			style         1
+		}
+	
+		itemDef {
+			name          "backgroundRed2"
+			decoration
+			rect          50 32 52 22
+			visible       1
+			ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+			backcolor     0.8 0.1 0.1 0.6
+			style         1
+		}
+		
+		itemDef {
+			name          "backgroundBlue2"
+			decoration
+			rect          0 32 52 22
+			visible       1
+			ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+			backcolor     0.1 0.1 0.8 0.6
+			style         1
+		}
+	
+		//*****SCORE VALUES*****//
+	
+		itemdef {
+			name          "scoreRed1"
+			decoration
+			ownerdraw     CG_RED_SCORE
+			ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+			rect          15 50 32 20
+			visible       1
+			textscale     0.35
+			align 		ITEM_ALIGN_CENTER
+		}
+		
+		itemdef {
+			name          "scoreBlue1"
+			decoration
+			ownerdraw     CG_BLUE_SCORE
+			ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+			rect          65 50 32 20
+			visible       1
+			textscale     0.35
+			align 		ITEM_ALIGN_CENTER
+		}
+		
+		itemdef {
+			name          "scoreRed2"
+			decoration
+			ownerdraw     CG_RED_SCORE
+			ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+			rect          65 50 32 20
+			visible       1
+			textscale     0.35
+			align 		ITEM_ALIGN_CENTER
+		}
+		
+		itemdef {
+			name          "scoreBlue2"
+			decoration
+			ownerdraw     CG_BLUE_SCORE
+			ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+			rect          15 50 32 20
+			visible       1
+			textscale     0.35
+			align 		ITEM_ALIGN_CENTER
+		}
+	}
+	
+	//*****SCORE LIMITS*****//
+
+	menuDef {
+		name          "scoresFrameLimit"
+		widescreen WIDESCREEN_RIGHT
+		rect          635 416 60 60
+		fullScreen    MENU_FALSE
+		visible       MENU_TRUE
+	
+		itemDef {
+			name          "scoreLimit"
+			decoration
+			rect          0 64 32 20
+			visible       1
+			textscale     0.25
+			align ITEM_ALIGN_RIGHT
+			forecolor     1 1 1 0.5
+			ownerdraw     CG_CAPFRAGLIMIT
+			ownerdrawflag CG_SHOW_IF_CHAT_VISIBLE
+		}
+	}
+	
+	//*****SCORE BORDERS*****//
+	
+	menuDef {
+		name          "bordersteam"
+		widescreen WIDESCREEN_RIGHT
+		rect          537 416 60 60
+		fullScreen    MENU_FALSE
+		visible       MENU_TRUE
+		ownerdrawflag CG_SHOW_ANYTEAMGAME
+		
+		itemDef {
+			name "BorderFirst"
+			visible 1
+			rect 0 30 52 22
+			border WINDOW_BORDER_FULL
+			bordersize 2
+			bordercolor 0.8 0.8 0.8 1
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		}
+
+		itemDef {
+			name "BorderSecond"
+			visible 1
+			rect 51 30 50 22
+			border WINDOW_BORDER_FULL
+			bordersize 2
+			bordercolor 0.8 0.8 0.8 1
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		} 
+	}
+	
+	//*****SCORES DUEL/FFA*****//
+	
+	menuDef {
+		name          "scoresFrameDuel"
+		widescreen WIDESCREEN_RIGHT
+		rect          550 416 60 60
+		fullScreen    MENU_FALSE
+		visible       MENU_TRUE
+		ownerdrawflag CG_SHOW_ANYNONTEAMGAME
+		
+		//*****SCORE BACKGROUNDS*****//
+		
+		itemDef {
+			name          "background1st"
+			decoration
+			rect          0 34 45 20
+			visible       1
+			ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+			backcolor     0.1 0.1 0.8 0.6
+			style         1
+		}
+		
+		itemDef {
+			name          "background2nd"
+			decoration
+			rect          45 34 45 20
+			visible       1
+			ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+			backcolor     0.8 0.1 0.1 0.6
+			style         1
+		}
+			
+		//*****SCORE VALUES*****//
+
+		itemdef {
+			name          "myscore"
+			decoration
+			ownerdraw     CG_PLAYER_SCORE
+			ownerdrawflag CG_SHOW_ANYNONTEAMGAME 
+			rect          22 51 120 20
+			visible       1
+			textscale     .35
+			align 		ITEM_ALIGN_CENTER
+		}
+	
+		itemdef {
+			name          "enemyscore1st"
+			decoration
+			ownerdraw     CG_1STPLACE
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE 
+			rect          67 51 120 20
+			visible       0
+			textscale     .35
+			align 		ITEM_ALIGN_CENTER
+		}
+		
+		itemdef {
+			name          "enemyscore2nd"
+			decoration
+			ownerdraw     CG_2NDPLACE
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+			rect          67 51 120 20
+			visible       0
+			textscale     .35
+			align 		ITEM_ALIGN_CENTER
+		}
+	}
+	
+	//*****CTF FLAG STATUS*****//
+	
+	menuDef {
+		name          "ctfFlags"
+		widescreen WIDESCREEN_RIGHT
+		rect          570 416 60 60
+		fullScreen    MENU_FALSE
+		visible       MENU_TRUE
+		ownerdrawflag CG_SHOW_CTF
+		
+		//*****FLAG STATUS ICON*****//
+
+		itemDef {
+			name          "redflag"
+			decoration
+			rect          0 34 18 18
+			visible       1
+			ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE                      
+			ownerdraw     CG_RED_FLAGSTATUS
+		}
+		
+		itemDef {
+			name          "blueflag"
+			decoration
+			rect          50 34 18 18
+			visible       1
+			ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE                   	
+			ownerdraw     CG_BLUE_FLAGSTATUS
+		}
+		
+		itemDef {
+			name          "redflag"
+			decoration
+			rect          50 34 18 18
+			visible       1
+			ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE                      
+			ownerdraw     CG_RED_FLAGSTATUS
+		}
+		
+		itemDef {
+			name          "blueflag"
+			decoration
+			rect          0 34 18 18
+			visible       1
+			ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE                   	
+			ownerdraw     CG_BLUE_FLAGSTATUS
+		}
+	}
+	
+ //*****RACE STUFF*****//
+	menuDef {      
+		name "RaceHUD"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 269 25 115 25
+    
+		itemDef {
+		  name "raceBackground1"
+		  rect 0 0 8 64
+		  visible 1
+		  decoration
+		  backcolor 1 1 1 0.5
+		  style 1
+		  background "ui/assets/hud/scoreboxl2.tga"
+		  cvarTest "cg_gametype"
+		  showCvar { "2" }
+		}
+		
+		itemDef {
+		  name "raceBackground2"
+		  rect 8 0 100 64
+		  visible 1
+		  decoration
+		  backcolor 1 1 1 0.5
+		  style 1
+		  background "ui/assets/hud/scoreboxm.tga"
+		  cvarTest "cg_gametype"
+		  showCvar { "2" }
+		}
+		
+		itemDef {
+		  name "raceBackground3"
+		  rect 108 0 8 64
+		  visible 1
+		  decoration
+		  backcolor 1 1 1 0.5
+		  style 1
+		  background "ui/assets/hud/scoreboxr.tga"
+		  cvarTest "cg_gametype"
+		  showCvar { "2" }
+		}
+	  
+		itemDef {
+		  name "raceStatus"
+		  rect 58 22 110 15
+		  visible 1
+		  decoration
+		  align 1
+		  textscale 0.25
+		  ownerdraw CG_RACE_STATUS
+		  cvarTest "cg_gametype"
+		  showCvar { "2" }
+		}
+	  
+		itemDef {
+		  name "raceTimes"
+		  rect 25 34 110 15
+		  visible 1
+		  decoration
+		  align 0
+		  textscale 0.25
+		  ownerdraw CG_RACE_TIMES
+		  cvarTest "cg_gametype"
+		  showCvar { "2" }
+		}
+	}
+  
+
+	//*****PLAYER PICKUPS*****//
+
+	//*****POWERUP*****//
+	//quad, bs, regen ...
+
+	menuDef {
+		name       "powerup"
+		widescreen WIDESCREEN_RIGHT
+		fullScreen MENU_FALSE
+		visible    MENU_TRUE
+		rect       560 330 74 156
+	
+		itemDef {
+			name      "powerupArea"
+			decoration
+			rect      0 0 35 35
+			visible   1
+			textscale 0.55
+			textstyle 3
+			ownerdraw CG_AREA_POWERUP
+			special   0		// spacing
+			align     HUD_VERTICAL
+		}
+	}
+	
+	//*****USEABLE PICKUP*****//
+	//tele, injection thingy, suicide thingy etc.
+
+	menuDef {
+		name       "pickups"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible    MENU_TRUE
+		rect       480 445 32 64
+	
+		itemDef {
+			name      "playeritem"
+			decoration
+			rect      0 4 25 25
+			visible   1
+			ownerdraw CG_PLAYER_ITEM  
+		}
+	
+		itemDef {
+			name      "CTFPOWERUP"
+			decoration
+			rect      30 4 25 25
+			visible   1
+			ownerdraw CG_CTF_POWERUP
+		}
+	
+		itemDef {
+			name      "CTFPOWERUP"
+			decoration
+			rect      60 4 25 25
+			visible   1
+			ownerdraw CG_PLAYER_HASKEY
+		}
+	}
+	
+	//*****PLAYER HAS ENEMY FLAG ICON*****//
+	
+	menuDef {
+		name       "playerHasFlag"
+		widescreen WIDESCREEN_CENTER
+		fullScreen MENU_FALSE
+		visible    MENU_TRUE
+		rect       20 345 48 48
+
+		itemDef {
+			name      "flag"
+			decoration
+			rect      0 96 35 35
+			visible   1
+			style     1
+			ownerdraw CG_PLAYER_HASFLAG 
+		}
+	}
+	
+	//*****KILL/DEATH MESSAGES*****//
+	
+	menuDef {
+		name       "obit area"
+		widescreen WIDESCREEN_LEFT
+		fullScreen MENU_FALSE
+		visible    MENU_TRUE
+		rect       6 15 160 32
+	
+		itemdef {
+			name      "hudObit"
+			decoration
+			ownerdraw CG_PLAYER_OBIT
+			rect      0 0 160 32
+			visible   1
+			textscale .28
+		}
+	}
+	
+	//*****CHAT AREA*****//
+	
+	menuDef {
+		name       "chat area"
+		widescreen WIDESCREEN_LEFT
+		fullScreen MENU_FALSE
+		visible    MENU_TRUE
+		rect       5 0 32 256
+	
+		itemdef {
+			name      "chatWindow"
+			decoration
+			ownerdraw CG_AREA_NEW_CHAT
+			rect      0 300 600 100
+			visible   1
+		}
+	}
+	
+	//*****GAME TIME*****//
+	
+	menuDef {
+		name       "timerFrame"
+		widescreen WIDESCREEN_RIGHT
+		rect       420 110 135 44
+		fullScreen MENU_FALSE
+		visible    MENU_TRUE
+		
+		itemDef {
+			name      "timerfg"
+			cvarTest "g_gametype"
+			hideCvar {4}
+			decoration
+			rect      -25 -40 150 45
+			visible   0
+			backcolor 0 0.5 1 0.4
+			style     1
+		}
+		itemDef {
+			name       "Timer"
+			cvarTest "g_gametype"
+			hideCvar {4}
+			decoration
+			textalign  1
+			style      0
+			rect       0 0 84 20
+			visible    1
+			textstyle  6
+			forecolor  1 1 1 1
+			textscale  1
+			ownerdraw  CG_LEVELTIMER
+		}
+		itemDef {
+			name       "roundTimer"
+			cvarTest "g_gametype"
+			hideCvar {4}
+			decoration
+			textalign  0
+			style      0
+			rect       0 0 84 20
+			visible    1
+			textstyle  3
+			forecolor  1 1 1 1
+			textscale  0.50
+			ownerdraw  CG_ROUNDTIMER
+		}
+	}
+
+  //*****ESCORT AND RETURN INDICATORS*****//
+
+	menuDef {
+		name "Team Status"
+		widescreen WIDESCREEN_CENTER
+		fullscreen MENU_FALSE
+		visible MENU_TRUE
+		rect 210 420 0 0
+		ownerdrawflag CG_SHOW_CTF
+		widescreen 2
+    
+		itemDef {
+			name          "ESCORT_BG"
+			decoration
+			rect          120 -40 100 26
+			visible       1
+			ownerdrawflag CG_SHOW_YOURTEAMHASENEMYFLAG
+			backcolor     0.1 0.1 0.8 0.2
+			style         1
+		}    
+		
+		itemDef {
+			name          "RETURN_BG"
+			decoration
+			rect          0 -40 100 26
+			textalign 2
+			visible       1
+			ownerdrawflag CG_SHOW_OTHERTEAMHASFLAG
+			backcolor     0.8 0.1 0.1 0.2
+			style         1
+		}
+		
+		itemDef {
+			name          "ESCORT"
+			rect          130 -20 0 0
+			textscale     0.4
+			forecolor     0 1 1 1
+			text          "ESCORT"
+			ownerdrawflag CG_SHOW_YOURTEAMHASENEMYFLAG
+		}
+		
+		itemDef {
+			name          "RETURN"
+			rect          90 -20 0 0
+			textscale     0.4
+			textalign     2
+			forecolor     1 1 0 1      
+			text          "RETURN"
+			ownerdrawflag CG_SHOW_OTHERTEAMHASFLAG
+		}
+	}
+}
