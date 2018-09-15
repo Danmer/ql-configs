@@ -1,0 +1,728 @@
+#include "ui/menudef.h"
+
+// Ammo
+menuDef {
+    	name "ammo"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE
+    	rect 275 444 99 36
+	
+	itemDef {
+     	name "ammo icon"
+	rect 60 -14 30 30
+	visible 1
+	decoration
+	ownerdraw CG_PLAYER_AMMO_ICON2D
+	}
+
+	itemDef {
+ 	name "ammo count"
+	rect 5 0 63 12
+	visible 1
+	textstyle 3
+	decoration
+	textscale .6
+	forecolor 1 1 1 1
+	ownerdraw CG_PLAYER_AMMO_VALUE
+	addColorRange -999 5 1 0 0 1
+	addColorRange 5 15 .7 .4 0 1
+  	addColorRange 16 999 1 1 1 1
+	}
+}
+
+// Health
+menuDef {
+    	name "Health"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE
+   	rect 170 444 95 36
+
+	itemDef {
+      name "health count"
+      rect 15 -4 63 22
+	visible 1
+	textalign 0
+	decoration
+	textstyle 3
+	forecolor 1 1 1 1
+	textscale 0.8
+	ownerdraw CG_PLAYER_HEALTH
+	addColorRange -999 25 1 0 0 1
+  	addColorRange 26 100 1 1 1 1
+  	addColorRange 101 999 0 1 0 1
+	}
+}
+
+// Armor
+menuDef {
+    	name "Armor"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 325 444 95 32
+
+	itemDef {
+      name "armor count"
+      rect 20 -4 63 22
+	visible 1
+	decoration
+	textstyle 3	
+	textscale 0.8
+	textalign 0
+	ownerdraw CG_PLAYER_ARMOR_VALUE 
+	addColorRange -999 25 1 0 0 1
+  	addColorRange 26 100 1 1 1 1
+  	addColorRange 101 999 0 1 0 1
+	}
+}
+
+// GAME TIME
+menuDef {
+		name       "timerFrame"
+		rect       280 125 200 75
+		fullScreen MENU_FALSE
+		visible    MENU_TRUE
+	
+		itemDef {
+			name      "timerfg"
+			decoration
+			rect      -28 -32 180 40
+			visible   1
+			backcolor 0 0.5 1 0.4
+			style     1
+		}
+		itemDef {
+			name       "Timer"
+			decoration
+			textalign  1
+			style      0
+			rect       0 0 130 50
+			visible    1
+			textstyle  3
+			forecolor  1 1 1 1
+			textscale  1
+			ownerdraw  CG_LEVELTIMER
+		}
+		itemDef {
+			name       "roundTimer"
+			decoration
+			textalign  0
+			style      0
+			rect       0 0 130 50
+			visible    1
+			textstyle  3
+			forecolor  1 1 1 1
+			textscale  1
+			ownerdraw  CG_ROUNDTIMER
+		}
+}
+
+// Red first place
+menuDef {
+    	name "Red scores"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 501 409.5 120 40
+	ownerdrawflag CG_SHOW_ANYTEAMGAME
+
+	itemDef {
+     	name "Red box"
+	rect 107 34 32 17
+	visible 1
+	style 1
+	decoration
+	backcolor 1 0 0 .4
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+
+    	itemDef {
+	name "Red score"
+	ownerdraw CG_RED_SCORE
+   	rect 0 8 136 40
+	textstyle 3
+   	visible 1
+	forecolor 1 1 1 1
+	textscale .3
+	decoration
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name "Red Flagicon"
+	rect 90 34 16 16
+	visible 1
+	decoration
+	ownerdraw CG_RED_FLAGSTATUS
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+}
+
+// Red not first place
+menuDef {
+    	name "Red scores"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 501 405 120 40
+	ownerdrawflag CG_SHOW_ANYTEAMGAME
+
+	itemDef {
+     	name "Red box"
+	rect 107 55 32 17
+	visible 1
+	style 1
+	decoration
+	backcolor 1 0 0 .4
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+
+    	itemDef {
+	name "Red score"
+	ownerdraw CG_RED_SCORE
+   	rect 0 30 136 40
+	textstyle 3
+   	visible 1
+	forecolor 1 1 1 1
+	textscale .3
+	decoration
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name "Red Flagicon"
+	rect 90 56 16 16
+	visible 1
+	decoration
+	ownerdraw CG_RED_FLAGSTATUS
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+}
+
+// Blue first place
+menuDef {
+    	name "Blue scores"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 501 409.5 120 40
+	ownerdrawflag CG_SHOW_ANYTEAMGAME
+
+	itemDef {
+     	name "Blue box"
+	rect 107 34 32 17 
+	visible 1
+	style 1
+	decoration
+	backcolor 0 0 1 .4
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+
+    	itemDef {
+	name "Blue score"
+	ownerdraw CG_BLUE_SCORE
+   	rect 0 8 136 40
+	textstyle 3
+   	visible 1
+	forecolor 1 1 1 1
+	textscale .3
+	decoration
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name "Blue Flagicon"
+	rect 90 34 16 16
+	visible 1
+	decoration
+	ownerdraw CG_BLUE_FLAGSTATUS
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+}
+
+// Blue not first place
+menuDef {
+    	name "Blue scores"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 501 405 120 40
+ 	ownerdrawflag CG_SHOW_ANYTEAMGAME
+
+	itemDef {
+     	name "Blue box"
+	rect 107 55 32 17
+	visible 1
+	style 1
+	decoration
+	backcolor 0 0 1 .4
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+
+    	itemDef {
+	name "Blue score"
+	ownerdraw CG_BLUE_SCORE
+   	rect 0 30 136 40
+	textstyle 3
+   	visible 1
+	forecolor 1 1 1 1
+	textscale .3
+	decoration
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name "Blue Flagicon"
+	rect 90 56 16 16
+	visible 1
+	decoration
+	ownerdraw CG_BLUE_FLAGSTATUS
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+}
+
+// FFA & Duel scores
+menuDef {
+    	name "scores"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 615 437 120 40
+	ownerdrawflag CG_SHOW_ANYNONTEAMGAME
+
+	itemDef {
+     	name "box"
+	rect -8 5 32 17 
+	visible 1
+	style 1
+	decoration
+	backcolor 0.3 0.3 0 .2
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}
+
+    	itemDef {
+	name "1stplace"
+	ownerdraw CG_1STPLACE
+   	rect 0 20.5 90 40
+   	visible 1
+	forecolor 1 1 1 1 
+	textscale .3
+	decoration
+	}
+
+	itemDef {
+     	name "box"
+	rect -8 24 32 17  
+	visible 1
+	style 1
+	decoration
+	backcolor 0.3 0.3 0 .2
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}
+
+  	itemDef {
+	name "2ndplace"
+	ownerdraw CG_PLAYER_SCORE
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE 
+   	rect -34.5 -2.5 90 40
+   	visible 1
+	forecolor 1 1 1 1 
+	textscale .3
+	decoration
+	}
+
+  	itemDef {
+	name "2ndplace"
+	ownerdraw CG_2NDPLACE
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+   	rect 0 38.5 90 40
+   	visible 1
+	forecolor 1 1 1 1 
+	textscale .3
+	decoration
+	}
+}
+
+// CA red first place
+menuDef {
+	name "CA players"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 585 165 48 32
+	ownerdrawflag CG_SHOW_CLAN_ARENA
+	
+    	itemDef {
+	name "how many players red"
+	rect 1 289 32 16
+   	visible 1
+	textalign 2
+	textscale .25
+	forecolor 1 0 0 1
+	decoration
+	ownerdraw CG_RED_CLAN_PLYRS
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE 
+	}
+
+	itemDef {
+	name "("
+   	rect 0 288 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text (
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name ")"
+   	rect 17 288 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text )
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+	
+	itemDef {
+	name "how many players blue"
+   	rect 1 308 136 40
+   	visible 1
+	textalign 2
+	textscale .25
+	forecolor 0 0 1 1
+	decoration
+	ownerdraw CG_BLUE_CLAN_PLYRS  
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name "("
+   	rect 0 307 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text (
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name ")"
+   	rect 17 307 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text )
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+	}
+}
+
+// CA blue first place
+menuDef {
+	name "CA players"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 585 165 48 32
+	ownerdrawflag CG_SHOW_CLAN_ARENA
+	
+    	itemDef {
+	name "how many players blue"
+	rect 1 289 32 16
+   	visible 1
+	textalign 2
+	textscale .25
+	forecolor 0 0 1 1
+	decoration
+	ownerdraw CG_BLUE_CLAN_PLYRS
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE 
+	}
+
+	itemDef {
+	name "("
+   	rect 0 288 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text (
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name ")"
+   	rect 17 288 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text )
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+	
+	itemDef {
+	name "how many players red"
+   	rect 1 308 136 40
+   	visible 1
+	textalign 2
+	textscale .25
+	forecolor 1 0 0 1
+	decoration
+	ownerdraw CG_RED_CLAN_PLYRS  
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name "("
+   	rect 0 307 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text (
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+
+	itemDef {
+	name ")"
+   	rect 17 307 136 40
+   	visible 1
+	textalign 2
+	textscale .2
+	forecolor 1 1 1 0.4
+	decoration
+	text )
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+	}
+}
+
+// FLAG warnings
+menuDef {
+    	name "FLAG warnings"
+    	fullScreen MENU_FALSE	
+    	visible MENU_TRUE	
+    	rect 420 -20 120 40
+
+	itemDef {
+      name "text YOUR TEAM GOT ENEMYS FLAG"
+      rect 40 75 23 23
+      visible 1
+      decoration
+	forecolor 0.3 0.3 0 1
+	textstyle 1
+	textscale .2
+	text "YOUR TEAM GOT ENEMYS FLAG"
+      ownerdrawflag CG_SHOW_YOURTEAMHASENEMYFLAG
+    	}
+
+	itemDef {
+      name "text ENEMY GOT YOUR FLAG"
+      rect 80 88 23 23
+      visible 1
+      decoration
+	forecolor 1 0 0 1
+	textstyle 1
+	textscale .2
+	text "ENEMY GOT YOUR FLAG"
+      ownerdrawflag CG_SHOW_OTHERTEAMHASFLAG
+    	}
+}
+
+// Borders
+menuDef {
+	name "Borders duel/ffa"
+	rect 0 0 0 0
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+
+itemDef{
+	name "Border1"
+	visible 1
+	rect 606.5 441 32 19
+	border WINDOW_BORDER_FULL
+	bordersize 1.5
+	bordercolor 0.8 0.8 0.3 1
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+	}
+
+itemDef{	
+	name "Border2"
+	visible 1
+	rect 606.5 458 32 19
+	border WINDOW_BORDER_FULL
+	bordersize 1.5
+	bordercolor 0.8 0.8 0.3 1
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+	}    
+}
+
+// Powerup
+menuDef {
+	name "powerup"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 290 390 74 156
+
+	itemDef {
+	name "powerupArea"
+	rect 0 0 29 16
+	visible 1
+	decoration
+	textscale 0.5
+	textstyle 3
+	ownerdraw CG_AREA_POWERUP
+	special 0
+	align HUD_VERTICAL
+	}
+}
+
+// CTF Powerups
+menuDef {
+    	name "pickups"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE
+    	rect 598 421 385 32
+
+	itemDef {
+      name "playeritem"
+      rect 0 0 18 18
+	visible 1
+	decoration
+	ownerdraw CG_PLAYER_ITEM  
+	}
+
+	itemDef {
+      name "CTFPOWERUP"
+      rect 20 0 18 18
+	visible 1
+	decoration
+	ownerdraw CG_CTF_POWERUP
+	}
+}
+
+// Player has flag
+menuDef {
+    	name "playerHasFlag"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE
+    	rect 370 450 385 32
+    	
+	itemDef {
+      name "flag"
+      rect 0 0 26 26
+	visible 1
+	decoration
+	style 1
+	ownerdraw CG_PLAYER_HASFLAG2D 
+	}
+}
+
+// Frag msg
+menuDef {
+	name "Frag"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 10 380 160 32
+
+    	itemdef {
+	name "who fragged who"
+	ownerdraw CG_PLAYER_OBIT
+   	rect 0 0 130 32
+   	visible 1
+	decoration
+	textscale .20
+	}
+}
+
+// chat area	
+menuDef {
+	name "chat area"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 0 0 32 256
+
+	itemdef {
+	name chatWindow
+	ownerdraw CG_AREA_NEW_CHAT
+	rect 5 287 634 120
+	visible 1
+	decoration
+	}
+}
+
+// Fraglimit only shows in FFA
+
+menuDef {
+    	name "ScoreFrame"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 614 400 32 256
+
+	itemDef {
+      name "WinLimit"
+      textalign 1
+      rect 7 37 40 12
+	visible 1
+    	decoration
+	forecolor 1 1 1 1
+	textscale .21
+	ownerdraw CG_CAPFRAGLIMIT
+	cvartest g_gametype
+	showcvar { "0" }
+	}
+
+	itemDef {
+     	name "Black box"
+	rect 5 27 19 12
+	visible 1
+	style 1
+	decoration
+	backcolor 0 0 0 .4
+	cvartest g_gametype
+	showcvar { "0" }
+	}
+}
+
+// Map name in warmup
+menuDef {
+    	name "mapname"
+    	fullScreen MENU_FALSE
+    	visible MENU_TRUE	
+    	rect 20 20 120 40
+	ownerdrawflag CG_SHOW_IF_WARMUP
+
+	itemDef {
+     	name "mapname"
+	rect 0 0 50 12
+	textscale .2
+	visible 1
+	style 0
+	decoration
+	forecolor 0 1 1 1
+	ownerdraw CG_MAP_NAME
+	}
+}
+
+// Crosshair
+menuDef {
+	name "crosshair"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE	
+	rect 2 0 32 256
+
+	itemDef {
+	name "crosshair"
+	text "o"
+	rect 314 244.5 50 12
+	textscale .3
+	visible 0
+	style 0
+	decoration
+	forecolor 0 1 1 1
+	}
+}
+
+}
