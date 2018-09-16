@@ -1,0 +1,26 @@
+#include "ui/menudef.h"
+
+// all
+#define	DEFAULTS_ITEM	decoration visible 1 widescreen 2
+
+/*============================CHAT========================*/
+menuDef {
+	name "chatArea"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 0 303 640 107 
+		itemDef {
+		name "boxBackground"
+		rect 0 0 640 107 
+		visible 1
+		style WINDOW_STYLE_FILLED
+		ownerdrawflag CG_SHOW_IF_CHAT_VISIBLE
+		backcolor 0 0 0 0 
+	}
+    itemdef {
+		name "chatWindow"
+		ownerdraw CG_AREA_NEW_CHAT
+		rect 0 -15 640 120 
+		DEFAULTS_ITEM
+	}
+}

@@ -1,0 +1,30 @@
+#include "ui/menudef.h"
+
+
+// all
+#define	DEFAULTS_ITEM	decoration visible 1 widescreen 2
+
+/*============================USABLE PLAYER ITEN========================*/
+menuDef {
+	name "playerItem" // USEABLE ITEMS - kamikaze, invulnerability, medkit, teleporter
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 0 445 25 25 
+	itemDef {
+      	name "playerItemIcon"
+      	rect 0 0 25 25 
+		DEFAULTS_ITEM
+		ownerdraw CG_PLAYER_ITEM  
+	}
+	itemDef {
+			name "Key"
+			rect 60 0 24 24
+			DEFAULTS_ITEM
+			style WINDOW_STYLE_FILLED
+			ownerdraw CG_PLAYER_HASKEY
+		}
+
+
+
+
+}

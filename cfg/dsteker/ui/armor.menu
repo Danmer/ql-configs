@@ -1,0 +1,37 @@
+#include "ui/menudef.h"
+// all
+#define	DEFAULTS_ITEM	decoration visible 1 style 1 widescreen 2
+
+/*============================ARMOR indicator========================*/
+menuDef {
+	name "armorIndicator"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 355 435 94 32 
+	itemDef {
+		name "armorIndicatorIcon" 
+		rect 0 0 32 32 
+		DEFAULTS_ITEM
+		style 1
+		cvarTest "cg_draw3dIcons" 
+		showCvar {0}
+		background "icons/iconr_red"
+	}
+	itemDef {
+		name "armorIndicatorCounter" 
+		rect 32 0 62 22 
+		textalign 0
+		DEFAULTS_ITEM
+		textstyle 3 
+		forecolor 0.9 0.9 0 1 
+		textscale 0.6 
+		ownerdraw CG_PLAYER_ARMOR_VALUE
+		addColorRange -999 0 1 0 0 0
+		addColorRange 1 10 1 0 0 1				
+		addColorRange 11 42 1 .5 0 1			
+		addColorRange 43 80 1 1 0 1			    
+		addColorRange 81 100 1 1 1 1			
+		addColorRange 101 150 0 1 1 1
+		addColorRange 151 999 0 1 0 1
+	}
+}

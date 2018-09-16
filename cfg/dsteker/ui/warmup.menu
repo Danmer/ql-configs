@@ -1,0 +1,372 @@
+#include "ui/menudef.h"
+
+// all
+#define	DEFAULTS_ITEM	decoration visible 1
+#define	DEFAULTS_MENU	fullScreen MENU_FALSE visible MENU_TRUE widescreen 1
+/*============================WARMUP========================*/
+	menuDef {
+    	name "GameTypeIconWarmupFrame"
+    	rect 0 -6 1 1 
+    	DEFAULTS_MENU
+		ownerdrawflag CG_SHOW_IF_WARMUP
+		
+		itemdef {
+			name "GameTypeIconWarmupFrameLeft"
+			rect 0 0 6 77
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			DEFAULTS_ITEM
+			background "ui/assets/hud/scoreboxl2a.tga"
+			style 1
+			backcolor 1 1 1 .7
+			}
+		itemDef {
+			name "GameTypeIconWarmupFrameMiddle"
+			rect 6 0 32 77
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			DEFAULTS_ITEM
+			backcolor 1 1 1 .7
+			style 1
+			background "ui/assets/hud/scoreboxm2.tga"
+		}
+		itemDef {
+			name "GameTypeIconWarmupFrameRight"
+			rect 38 0 6 77
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			DEFAULTS_ITEM
+			backcolor 1 1 1 .7
+			style 1
+			background "ui/assets/hud/scoreboxr2.tga"
+		}
+	}
+//==============
+	menuDef {
+		DEFAULTS_MENU
+		ownerdrawflag CG_SHOW_IF_WARMUP
+		rect 4 4 1 1
+		
+		itemDef {
+			name "GameTypeIconWarmupFilled"
+			rect 0 0 36 36
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			DEFAULTS_ITEM
+			forecolor 1 1 1 1
+			style WINDOW_STYLE_FILLED
+			backcolor 1 1 1 .2
+		}
+		
+	
+		
+		itemDef {
+			rect 0 0 36 36
+			name "GameTypeIconWarmup"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			ownerdraw CG_GAME_TYPE_ICON
+			ownerdrawflag CG_SHOW_IF_WARMUP
+		}
+	}
+//===============
+	menuDef {
+		DEFAULTS_MENU
+		ownerdrawflag CG_SHOW_IF_WARMUP
+		rect 46 10 1 1
+		
+		itemDef {
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			textstyle 2
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			ownerdraw CG_MAP_NAME
+		}
+	}
+//============
+	menuDef {
+		DEFAULTS_MENU
+		ownerdrawflag CG_SHOW_IF_WARMUP
+		rect 46 22 1 1
+
+		itemDef {
+		widescreen 0
+			name "localTime"							// дата и время
+			rect 230 -14 50 50
+			ownerdraw CG_LOCALTIME
+			textscale 0.18
+			forecolor 1 1 1 1 
+			style WINDOW_STYLE_FILLED
+			DEFAULTS_ITEM
+			ownerdrawflag CG_SHOW_IF_WARMUP
+		}
+
+		itemDef {
+			name "FFAWarmup"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: FFA"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {0}
+		}
+		
+		itemDef {
+			name "DuelWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: DUEL"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {1}
+		}
+
+		itemDef {
+			name "SingleWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: Race"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {2}
+		}
+		
+		itemDef {
+			name "TDMWarmup"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: TDM"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showcvar {3}
+		}
+
+		itemDef {
+			name "CAWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: CA"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showcvar {4}
+		}
+		
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: CTF"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {5}
+		}
+
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: One-Flag CTF"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {6}
+		}
+		
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: Overload"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {7}
+		}
+
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: Harvester"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {8}
+		}
+
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: Freeze Tag"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {9}
+		}
+
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: Domination"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {10}
+		}
+
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: Attack & Defend"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {11}
+		}
+
+		itemDef {
+			name "CTFWarmUp"
+			decoration
+			style 1
+			forecolor 1 1 1 1
+			textscale .18
+			text "Gametype: Red Rover"
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			cvarTest "g_gametype"
+			showCvar {12}
+		}
+	}
+
+
+	menuDef {
+		DEFAULTS_MENU	
+		ownerdrawflag CG_SHOW_IF_WARMUP
+		rect 46 34 1 1
+   	 
+		itemDef { 
+			DEFAULTS_ITEM
+			textstyle 2	
+			text "FragLimit:"
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_SHOW_IF_WARMUP 
+			cvarTest "g_gametype"
+			showCvar {0 1 3}
+		}
+
+		itemDef {
+			textalign 1
+			rect 56 0 1 1 
+			DEFAULTS_ITEM
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_CAPFRAGLIMIT
+			cvarTest "g_gametype"
+			showCvar {0 1 3}
+		}
+
+		itemDef { 
+			textstyle 2
+			DEFAULTS_ITEM	
+			text "RoundLimit:"
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_SHOW_IF_WARMUP 
+			cvarTest "g_gametype"
+			showCvar {4 9 12}
+		}
+		
+		itemDef {
+			textalign 1
+			rect 63 0 1 1 
+			DEFAULTS_ITEM
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_CAPFRAGLIMIT
+			cvarTest "g_gametype"
+			showCvar {4 9 12}
+		}
+
+	
+		itemDef { 
+			textstyle 2
+			DEFAULTS_ITEM	
+			text "CapLimit:"
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_SHOW_IF_WARMUP 
+			cvarTest "g_gametype"
+			showCvar {5 6 8}
+		}
+		
+		itemDef {
+			textalign 1
+			rect 49 0 1 1 
+			DEFAULTS_ITEM
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_CAPFRAGLIMIT
+			cvarTest "g_gametype"
+			showCvar {5 6 8}
+		}
+
+		itemDef { 
+			textstyle 2
+			DEFAULTS_ITEM	
+			text "Score:"
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_SHOW_IF_WARMUP 
+			cvarTest "g_gametype"
+			showCvar {7 10 11}
+		}
+		
+		itemDef {
+			textalign 1
+			rect 49 0 1 1 
+			DEFAULTS_ITEM
+			forecolor 1 1 1 1
+			textscale .18
+			ownerdraw CG_CAPFRAGLIMIT
+			cvarTest "g_gametype"
+			showCvar {7 10 11}
+		}
+	}
+// obits on warmup
+	menuDef {
+		name "Obit area"
+		DEFAULTS_MENU
+		ownerdrawflag CG_SHOW_IF_WARMUP
+		rect 4 70 1 1
+
+		itemdef {
+			name "hudObit"
+			ownerdraw CG_PLAYER_OBIT
+			ownerdrawflag CG_SHOW_IF_WARMUP
+			rect 0 0 50 12
+			DEFAULTS_ITEM
+			textscale .2
+			cvarTest "cg_gametype"
+			hideCvar { "2" }
+		}
+	}

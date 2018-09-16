@@ -1,0 +1,1044 @@
+#include "ui/menudef.h"
+
+// use CALL MAP
+#define DEFAULTS_ITEM_CALL	decoration visible 1 textstyle 2 rect 0 0 38 38 backcolor 1 1 1 0.6 style WINDOW_STYLE_FILLED hideCvar { "" }
+#define DEFAULTS_ITEM_BG		visible 1  backcolor 1 1 1 .9 style WINDOW_STYLE_FILLED cvarTest "ui_voteactive" showCvar { "1" }
+
+//* /*============================CALLMAP IMAGES========================*/*//
+/* --- Statistic indicators --- */
+menuDef { 
+	rect 15 316 435 220
+	visible 1
+	
+*	itemDef {					//	TEST BLACK
+		name "bg"
+		rect -1 -1  40 40 
+		DEFAULTS_ITEM_BG
+		backcolor 0 0 0 .7
+	}	*
+
+//================= callvote map 
+	itemDef {
+		name "Aerowalk"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Aerowalk" }
+		background "levelshots/Aerowalk.jpg"		
+	}
+
+	itemDef {
+		name "AlmostLost"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map AlmostLost" }
+		background "levelshots/AlmostLost.jpg"		
+	}
+
+     itemDef {
+		name "ArcaneCitadel"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ArcaneCitadel" }
+		background "levelshots/arcanecitadel.jpg"		
+	}
+
+	itemDef {
+		name "ArenaGate"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ArenaGate" }
+		background "levelshots/ArenaGate.jpg"		
+	}
+
+	itemDef {
+		name "Asylum"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Asylum" }
+		background "levelshots/Asylum.jpg"		
+	}
+
+	itemDef {
+		name "BaseSiege"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map BaseSiege" }
+		background "levelshots/BaseSiege.jpg"		
+	}
+
+	itemDef {
+		name "Battleforged"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Battleforged" }
+		background "levelshots/Battleforged.jpg"		
+	}
+
+	itemDef {
+		name "BeyondReality"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map BeyondReality" }
+		background "levelshots/BeyondReality.jpg"		
+	}	
+
+	itemDef {
+		name "BlackCathedral"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map BlackCathedral" }
+		background "levelshots/BlackCathedral.jpg"		
+	}
+
+	itemDef {
+		name "Bloodlust"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Bloodlust" }
+		background "levelshots/Bloodlust.jpg"		
+	}
+
+	itemDef {
+		name "Bloodrun"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map bloodrun" }
+		background "levelshots/bloodrun.jpg"		
+	}
+
+	itemDef {
+		name "BrimstoneAbbey"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map BrimstoneAbbey" }
+		background "levelshots/BrimstoneAbbey.jpg"		
+	}
+
+	itemDef {
+		name "CamperCrossings"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map CamperCrossings" }
+		background "levelshots/campercrossings.jpg"		
+	}
+
+	itemDef {
+		name "campgrounds"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map campgrounds" }
+		background "levelshots/campgrounds.jpg"		
+	}
+
+	itemDef {
+		name "CannedHeat"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map CannedHeat" }
+		background "levelshots/CannedHeat.jpg"		
+	}
+
+	itemDef {
+		name "ChemicalReaction"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ChemicalReaction" }
+		background "levelshots/ChemicalReaction.jpg"		
+	}
+
+	itemDef {
+		name "Cliffside"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map cliffside" }
+		background "levelshots/cliffside.jpg"		
+	}		
+
+	itemDef {
+		name "CobaltStation"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map CobaltStation" }
+		background "levelshots/CobaltStation.jpg"		
+	}
+
+	itemDef {
+		name "Cold Cathode"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ColdCathode" }
+		background "levelshots/ColdCathode.jpg"		
+	}
+
+	itemDef {
+		name "ColdWar"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ColdWar" }
+		background "levelshots/ColdWar.jpg"		
+	}
+
+	itemDef {
+		name "ConcretePalace"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ConcretePalace" }
+		background "levelshots/ConcretePalace.jpg"		
+	}
+
+	itemDef {
+		name "Corrosion"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map corrosion" }
+		background "levelshots/corrosion.jpg"		
+	}		
+
+	itemDef {
+		name "Courtyard"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Courtyard" }
+		background "levelshots/Courtyard.jpg"		
+	}
+
+     itemDef {
+		name "Cure"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Cure" }
+		background "levelshots/Cure.jpg"		
+	}
+
+	itemDef {
+		name "DeepInside"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map DeepInside" }
+		background "levelshots/DeepInside.jpg"		
+	}
+
+	itemDef {
+		name "DemonKeep"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map DemonKeep" }
+		background "levelshots/DemonKeep.jpg"		
+	}
+
+	itemDef {
+		name "Delirium"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Delirium" }
+		background "levelshots/delirium.jpg"		
+	}
+
+	itemDef {
+		name "Devilish"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Devilish" }
+		background "levelshots/Devilish.jpg"		
+	}
+
+	itemDef {
+		name "DiesIrae"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map DiesIrae" }
+		background "levelshots/DiesIrae.jpg"		
+	}
+
+	itemDef {
+		name "Dismemberment"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Dismemberment" }
+		background "levelshots/Dismemberment.jpg"		
+	}
+
+	itemDef {
+		name "DistantScreams"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map DistantScreams" }
+		background "levelshots/DistantScreams.jpg"		
+	}
+
+	itemDef {
+		name "DoubleImpact"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map DoubleImpact" }
+		background "levelshots/DoubleImpact.jpg"		
+	}
+
+	itemDef {
+		name "DreadfulPlace"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map DreadfulPlace" }
+		background "levelshots/DreadfulPlace.jpg"		
+	}
+
+	itemDef {
+		name "Dredwerkz"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Dredwerkz" }
+		background "levelshots/Dredwerkz.jpg"		
+	}
+
+	itemDef {
+		name "DuelingKeeps"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map DuelingKeeps" }
+		background "levelshots/DuelingKeeps.jpg"		
+	}
+
+	itemDef {
+		name "ElectricHead"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ElectricHead" }
+		background "levelshots/ElectricHead.jpg"		
+	}
+
+	itemDef {
+		name "Eviscerated"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Eviscerated" }
+		background "levelshots/Eviscerated.jpg"		
+	}
+
+	itemDef {
+		name "Evolution"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Evolution" }
+		background "levelshots/Evolution.jpg"		
+	}
+
+	itemDef {
+		name "EyeToEye"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map EyeToEye" }
+		background "levelshots/EyeToEye.jpg"		
+	}
+
+	itemDef {
+		name "FalloutBunker"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map FalloutBunker" }
+		background "levelshots/FalloutBunker.jpg"		
+	}
+
+	itemDef {
+		name "FatalInstinct"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map FatalInstinct" }
+		background "levelshots/FatalInstinct.jpg"		
+	}
+
+	itemDef {
+		name "Finnegans"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Finnegans" }
+		background "levelshots/Finnegans.jpg"		
+	}
+
+	itemDef {
+		name "Fluorescent"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map fluorescent" }
+		background "levelshots/fluorescent.jpg"		
+	}
+
+	itemDef {
+		name "FocalPoint"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map FocalPoint" }
+		background "levelshots/FocalPoint.jpg"		
+	}
+
+	itemDef {
+		name "Foolish Legacy"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map foolishlegacy" }
+		background "levelshots/foolishlegacy.jpg"		
+	}
+
+	itemDef {
+		name "Forgotten"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Forgotten" }
+		background "levelshots/Forgotten.jpg"		
+	}
+
+	itemDef {
+		name "FuriousHeights"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map FuriousHeights" }
+		background "levelshots/FuriousHeights.jpg"		
+	}
+
+	itemDef {
+		name "Fuse"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Fuse" }
+		background "levelshots/Fuse.jpg"		
+	}
+
+	itemDef {
+		name "GothicRage"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map GothicRage" }
+		background "levelshots/GothicRage.jpg"		
+	}
+
+	itemDef {
+		name "Golgotha Core"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map GolgothaCore" }
+		background "levelshots/golgothacore.jpg"		
+	}
+
+	itemDef {
+		name "GrimDungeons"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map GrimDungeons" }
+		background "levelshots/GrimDungeons.jpg"		
+	}
+
+	itemDef {
+		name "Hearth"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Hearth" }
+		background "levelshots/Hearth.jpg"		
+	}
+
+	itemDef {
+		name "Hektik"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Hektik" }
+		background "levelshots/Hektik.jpg"		
+	}
+
+	itemDef {
+		name "HellsGate"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map HellsGate" }
+		background "levelshots/HellsGate.jpg"		
+	}
+
+	itemDef {
+		name "HellsGateRedux"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map HellsGateRedux" }
+		background "levelshots/HellsGateRedux.jpg"		
+	}
+
+	itemDef {
+		name "HerosKeep"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map HerosKeep" }
+		background "levelshots/HerosKeep.jpg"		
+	}
+
+	itemDef {
+		name "HiddenFortress"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map HiddenFortress" }
+		background "levelshots/HiddenFortress.jpg"		
+	}
+
+	itemDef {
+		name "HouseOfDecay"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map HouseOfDecay" }
+		background "levelshots/HouseOfDecay.jpg"		
+	}
+
+	itemDef {
+		name "IndustrialAccident"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map IndustrialAccident" }
+		background "levelshots/IndustrialAccident.jpg"		
+	}
+
+	itemDef {
+		name "Infinity"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map infinity" }
+		background "levelshots/infinity.jpg"		
+	}
+
+	itemDef {
+		name "InnerSanctums"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map InnerSanctums" }
+		background "levelshots/InnerSanctums.jpg"		
+	}
+
+	itemDef {
+		name "Intervention"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Intervention" }
+		background "levelshots/Intervention.jpg"		
+	}
+
+	itemDef {
+		name "IronWorks"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map IronWorks" }
+		background "levelshots/IronWorks.jpg"		
+	}
+
+	itemDef {
+		name "JapaneseCastles"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map JapaneseCastles" }
+		background "levelshots/JapaneseCastles.jpg"		
+	}
+
+	itemDef {
+		name "Jumpwerkz"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map jumpwerkz" }
+		background "levelshots/jumpwerkz.jpg"		
+	}	
+
+	itemDef {
+		name "Left Behind"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map LeftBehind" }
+		background "levelshots/LeftBehind.jpg"		
+	}
+
+	itemDef {
+		name "Leviathan"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Leviathan" }
+		background "levelshots/Leviathan.jpg"		
+	}
+
+	itemDef {
+		name "Limbus"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map limbus" }
+		background "levelshots/limbus.jpg"		
+	}
+
+	itemDef {
+		name "LongestYard"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map LongestYard" }
+		background "levelshots/LongestYard.jpg"		
+	}
+
+	itemDef {
+		name "LostWorld"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map LostWorld" }
+		background "levelshots/LostWorld.jpg"		
+	}
+
+	itemDef {
+		name "NamelessPlace"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map NamelessPlace" }
+		background "levelshots/NamelessPlace.jpg"		
+	}
+
+	itemDef {
+		name "Overkill"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Overkill" }
+		background "levelshots/Overkill.jpg"		
+	}
+
+	itemDef {
+		name "Overlord"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Overlord" }
+		background "levelshots/Overlord.jpg"		
+	}	
+
+	itemDef {
+		name "Phrantic"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Phrantic" }
+		background "levelshots/Phrantic.jpg"		
+	}
+
+	itemDef {
+		name "Pillbox"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Pillbox" }
+		background "levelshots/Pillbox.jpg"		
+	}
+
+	itemDef {
+		name "Powerstation"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map powerstation" }
+		background "levelshots/powerstation.jpg"		
+	}
+
+	itemDef {
+		name "ProvingGrounds"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ProvingGrounds" }
+		background "levelshots/ProvingGrounds.jpg"		
+	}
+
+	itemDef {
+		name "Purgatory"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Purgatory" }
+		background "levelshots/Purgatory.jpg"		
+	}
+
+	itemDef {
+		name "Quarantine"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Quarantine" }
+		background "levelshots/Quarantine.jpg"		
+	}
+
+	itemDef {
+		name "RealmOfSteelRats"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map RealmOfSteelRats" }
+		background "levelshots/RealmOfSteelRats.jpg"		
+	}
+
+	itemDef {
+		name "Rebound"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Rebound" }
+		background "levelshots/Rebound.jpg"		
+	}
+
+	itemDef {
+		name "Reflux"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Reflux" }
+		background "levelshots/Reflux.jpg"		
+	}
+
+	itemDef {
+		name "Repent"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Repent" }
+		background "levelshots/Repent.jpg"		
+	}
+
+	itemDef {
+		name "Retribution"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Retribution" }
+		background "levelshots/Retribution.jpg"		
+	}
+
+	itemDef {
+		name "Revolver"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Revolver" }
+		background "levelshots/Revolver.jpg"		
+	}
+
+	itemDef {
+		name "Sacellum"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Sacellum" }
+		background "levelshots/Sacellum.jpg"		
+	}
+
+	itemDef {
+		name "Scornforge"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Scornforge" }
+		background "levelshots/Scornforge.jpg"		
+	}
+
+	itemDef {
+		name "SeamsAndBolts"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map SeamsAndBolts" }
+		background "levelshots/SeamsAndBolts.jpg"		
+	}
+
+	itemDef {
+		name "ShiningForces"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ShiningForces" }
+		background "levelshots/ShiningForces.jpg"		
+	}
+
+	itemDef {
+		name "Siberia"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Siberia" }
+		background "levelshots/Siberia.jpg"		
+	}
+
+	itemDef {
+		name "Silence"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map silence" }
+		background "levelshots/silence.jpg"		
+	}	
+
+	itemDef {
+		name "Silentfright"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map silentfright" }
+		background "levelshots/silentfright.jpg"		
+	}	
+
+	itemDef {
+		name "Sinister"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map sinistert" }
+		background "levelshots/sinister.jpg"		
+	}
+
+	itemDef {
+		name "Skyward"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Skyward" }
+		background "levelshots/Skyward.jpg"		
+	}
+
+	itemDef {
+		name "Solid"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Solid" }
+		background "levelshots/Solid.jpg"		
+	}
+
+	itemDef {
+		name "SomewhatDamaged"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map SomewhatDamaged" }
+		background "levelshots/SomewhatDamaged.jpg"		
+	}
+
+	itemDef {
+		name "Sorrow"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Sorrow" }
+		background "levelshots/Sorrow.jpg"		
+	}
+
+	itemDef {
+		name "Spacecamp"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map spacecamp" }
+		background "levelshots/spacecamp.jpg"		
+	}
+
+	itemDef {
+		name "SpaceChamber"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map SpaceChamber" }
+		background "levelshots/SpaceChamber.jpg"		
+	}
+
+	itemDef {
+		name "SpaceCTF"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map SpaceCTF" }
+		background "levelshots/SpaceCTF.jpg"		
+	}
+
+	itemDef {
+		name "SpiderCrossings"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map SpiderCrossings" }
+		background "levelshots/SpiderCrossings.jpg"		
+	}
+
+	itemDef {
+		name "Spillway"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Spillway" }
+		background "levelshots/Spillway.jpg"		
+	}
+
+	itemDef {
+		name "Stonekeep"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Stonekeep" }
+		background "levelshots/Stonekeep.jpg"		
+	}
+
+	itemDef {
+		name "Stronghold"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Stronghold" }
+		background "levelshots/Stronghold.jpg"		
+	}
+
+	itemDef {
+		name "Terminalheights"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map terminalheights" }
+		background "levelshots/terminalheights.jpg"		
+	}
+
+	itemDef {
+		name "Terminatria"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map terminatria" }
+		background "levelshots/terminatria.jpg"		
+	}
+
+	itemDef {
+		name "Terminus"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map terminus" }
+		background "levelshots/terminus.jpg"		
+	}
+
+	itemDef {
+		name "TheatreOfPain"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map TheatreOfPain" }
+		background "levelshots/TheatreOfPain.jpg"		
+	}
+
+	itemDef {
+		name "theedge"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map theedge" }
+		background "levelshots/theedge.jpg"		
+	}
+
+	itemDef {
+		name "ThreeStory"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map ThreeStory" }
+		background "levelshots/ThreeStory.jpg"		
+	}
+
+	itemDef {
+		name "Thunderstruck"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Thunderstruck" }
+		background "levelshots/Thunderstruck.jpg"		
+	}
+
+	itemDef {
+		name "Tornado"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Tornado" }
+		background "levelshots/Tornado.jpg"		
+	}
+
+	itemDef {
+		name "Toxicity"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Toxicity" }
+		background "levelshots/Toxicity.jpg"		
+	}
+
+	itemDef {
+		name "Trinity"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Trinity" }
+		background "levelshots/Trinity.jpg"		
+	}
+
+	itemDef {
+		name "TroubledWaters"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map TroubledWaters" }
+		background "levelshots/TroubledWaters.jpg"		
+	}
+
+	itemDef {
+		name "useandabuse"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map useandabuse" }
+		background "levelshots/useandabuse.jpg"		
+	}
+
+	itemDef {
+		name "VerticalVengeance"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map VerticalVengeance" }
+		background "levelshots/VerticalVengeance.jpg"		
+	}	
+	
+	itemDef {
+		name "VortexPortal"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map VortexPortal" }
+		background "levelshots/VortexPortal.jpg"		
+	}
+
+	itemDef {
+		name "Warehouse"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Warehouse" }
+		background "levelshots/Warehouse.jpg"		
+	}
+	
+	itemDef {
+		name "Wargrounds"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Wargrounds" }
+		background "levelshots/Wargrounds.jpg"		
+	}
+
+	itemDef {
+		name "Wicked"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map Wicked" }
+		background "levelshots/wicked.jpg"		
+	}
+
+	itemDef {
+		name "WindowPain"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map WindowPain" }
+		background "levelshots/WindowPain.jpg"		
+	}
+	
+	itemDef {
+		name "Windsongkeep"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map windsongkeep" }
+		background "levelshots/windsongkeep.jpg"		
+	}
+	
+	itemDef {
+		name "qzpractice1"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map qzpractice1" }
+		background "levelshots/qzpractice1.jpg"		
+	}
+	
+	itemDef {
+		name "qzpractice2"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map qzpractice2" }
+		background "levelshots/qzpractice2.jpg"		
+	}
+
+	itemDef {
+		name "qztraining"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map qztraining" }
+		background "levelshots/qztraining.jpg"		
+	}
+
+	itemDef {
+		name "qzwarmup"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map qzwarmup" }
+		background "levelshots/qzwarmup.jpg"		
+	}
+
+	itemDef {
+		name "wintersedge"
+		DEFAULTS_ITEM_CALL
+		cvarTest "ui_votestring" 
+		showCvar { "map wintersedge" }
+		background "levelshots/wintersedge.jpg"		
+	}
+}

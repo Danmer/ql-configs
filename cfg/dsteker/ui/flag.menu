@@ -1,0 +1,156 @@
+#include "ui/menudef.h"
+
+// all
+#define	DEFAULTS_ITEM	decoration visible 1
+#define	DEFAULTS_MENU	fullScreen MENU_FALSE visible MENU_TRUE widescreen 2
+
+/*============================FLAG AND SKULLS indicators========================*/
+//red player has blue flag
+menuDef {
+	name "flagIndicator"
+	DEFAULTS_MENU
+	rect 296 0 48 48 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+		itemDef {
+		name "playerRect"
+		rect 0 0 48 48 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG
+	}
+	itemDef {
+      	name "flag"
+          rect 0 0 48 48 
+		DEFAULTS_ITEM
+		style 1
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG  
+		backcolor 0.2 0.35 1 0.9
+		background "ui/assets/score/flagb"
+	}
+	itemDef {	
+		name "skullblue"			// harvester skulls - check this
+		rect 0 0 55 36
+		DEFAULTS_ITEM
+		style 1
+		ownerdraw CG_HARVESTER_SKULLS
+		background "ui/assets/score/skull_blue"
+	}
+}
+//red team have a flag
+menuDef {
+	name "flagIndicator"
+	DEFAULTS_MENU
+	rect 499 439 40 40 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_RED
+	itemDef {
+		name "HaveBlueFlag"
+		rect 0 0 40 40 
+		DEFAULTS_ITEM
+		style 1
+		backcolor 0.2 0.35 1 0.9
+		background "gfx/2d/flag_status/red_flag_stolen"
+		ownerdrawflag CG_SHOW_RED_TEAM_HAS_BLUEFLAG
+	}
+	itemDef {
+		name "HaveRedFlag"
+		rect -380 0 40 40 
+		DEFAULTS_ITEM
+		style 1
+		backcolor 1 0 0 0.9
+		background "gfx/2d/flag_status/red_flag_at_base"	//слева флаг
+		ownerdrawflag CG_SHOW_BLUE_TEAM_HAS_REDFLAG
+	}
+	itemDef {
+		name "playerRect"
+		rect -380 0 40 40 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_BLUE_TEAM_HAS_REDFLAG
+	}
+}
+//blue player has red flag
+menuDef {
+	name "flagIndicator"
+	DEFAULTS_MENU
+	rect 296 0 48 48 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+	itemDef {
+		name "playerRect"
+		rect 0 0 48 48 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG
+	}
+	itemDef {
+      	name "flag"
+          rect 0 0 48 48 
+		DEFAULTS_ITEM
+		style 1
+		ownerdrawflag CG_SHOW_IF_PLAYER_HAS_FLAG  
+		backcolor 1 0 0 0.9
+		background "ui/assets/score/flagr"
+	}
+	itemDef {	
+		name "skullred"			// harvester skulls - check this
+		rect 0 0 55 36 
+		DEFAULTS_ITEM
+		style 1
+		ownerdraw CG_HARVESTER_SKULLS
+		background "ui/assets/score/skull_red"
+	}
+}
+//blue team have a flag
+menuDef {
+	name "flagIndicator"
+	DEFAULTS_MENU
+	rect 499 439 40 40 
+	ownerdrawflag CG_SHOW_IF_PLYR_IS_ON_BLUE
+	itemDef {
+		name "HaveRedFlag"
+		rect 0 0 40 40 
+		DEFAULTS_ITEM
+		style 1
+		backcolor 1 0 0 0.9
+		background "gfx/2d/flag_status/blue_flag_stolen"
+		ownerdrawflag CG_SHOW_BLUE_TEAM_HAS_REDFLAG
+	}
+	itemDef {
+		name "HaveBlueFlag"
+		rect -380 0 40 40 
+		style 1
+		DEFAULTS_ITEM
+		backcolor 0.2 0.35 1 0.9
+		background "gfx/2d/flag_status/blue_flag_at_base" // слева флаг
+		ownerdrawflag CG_SHOW_RED_TEAM_HAS_BLUEFLAG
+	}
+	itemDef {
+		name "playerRect"
+		rect -380 0 40 40 
+		visible 1
+		style 3
+		background "ui/assets/hud/flag"
+		ownerdrawflag CG_SHOW_RED_TEAM_HAS_BLUEFLAG
+	}
+}
+
+menuDef {
+    		name "EnemyHasFlag"
+    		DEFAULTS_MENU
+    		rect 503 475 40 40 
+       	ownerdrawflag CG_SHOW_CTF
+
+ 		itemDef {
+			name "FlagNoticeText"
+			rect -380 0 49 10
+			ownerdrawflag CG_SHOW_OTHERTEAMHASFLAG
+			style 0
+        		text "X"
+			forecolor .8 0 0 1
+        		textscale .95 
+        		textstyle 3
+        		DEFAULTS_ITEM
+		}
+	}

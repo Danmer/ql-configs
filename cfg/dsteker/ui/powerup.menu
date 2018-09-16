@@ -1,0 +1,23 @@
+#include "ui/menudef.h"
+// all
+#define	DEFAULTS_ITEM	decoration visible 1 widescreen 2
+
+
+/*============================POWERUP indicator========================*/
+menuDef {
+	name "powerupIndicator" // POWERUPS - quad-damage, haste, regeneration, etc.
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 600 230 50 80
+	itemDef {
+		name "powerupIndicatorArea"
+		rect 0 0 35 35 
+		DEFAULTS_ITEM
+		textscale 0.5 
+		forecolor 0.9 0.9 0 1
+ 		textstyle 3
+		ownerdraw CG_AREA_POWERUP
+		special 5 
+		align HUD_VERTICAL 
+	}
+}

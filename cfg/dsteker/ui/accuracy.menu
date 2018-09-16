@@ -1,0 +1,28 @@
+#include "ui/menudef.h"
+// all
+#define	DEFAULTS_ITEM	decoration visible 1 style 1 widescreen 2
+
+/*============================ACCURACY indicator========================*/
+menuDef {
+	name "Accuracy"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 90 445 35 10		
+	itemDef {
+		name "accuracyIcon"		
+		rect 0 0 10 10		
+		DEFAULTS_ITEM
+		backcolor 1 1 1 1		
+		background "ui/assets/medal_accuracy.png" // icon accuracy
+	}
+	itemDef {
+		name "accuracyValue"
+		rect 12 7 23 6		
+		DEFAULTS_ITEM
+		visible MENU_TRUE
+		ownerdraw CG_SELECTED_PLYR_ACCURACY	// accuracy
+		textstyle 3		
+		forecolor 1 1 1 1		
+		textscale 0.2	
+	}  
+}

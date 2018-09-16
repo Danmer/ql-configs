@@ -1,0 +1,123 @@
+#include "ui/menudef.h"
+
+// all
+#define	DEFAULTS_ITEM	decoration visible 1
+#define	DEFAULTS_MENU	fullScreen MENU_FALSE visible MENU_TRUE widescreen 2
+
+/*============================TIMERS========================*/
+
+menuDef {
+	name       "timerFrame"
+	rect       0 0 0 0 // расположение таймера вместе с рамкой
+	DEFAULTS_MENU
+	itemDef {
+		name       "TimerNeed"		// таймер крупный 
+		cvarTest "g_gametype"
+		showcvar {0,1,2,3,5,6,7}	// показать таймер в этих режимах g_gametype
+		DEFAULTS_ITEM
+		textalign  1
+		style      0
+		rect       290 425 0 0
+		textstyle  3
+		forecolor  1 1 1 1
+		textscale  0.8
+		ownerdraw  CG_LEVELTIMER
+		}
+	itemDef {
+		name       "TimerNoNeed"		// сам таймер
+		cvarTest "g_gametype"
+		showcvar {4,8,9,10,11,12}	// показать таймер в этих режимах g_gametype
+		DEFAULTS_ITEM
+		textalign  1
+		style      0
+		rect       290 425 0 0
+		textstyle  3
+		forecolor  1 1 1 1
+		textscale  0.5
+		ownerdraw  CG_LEVELTIMER
+		}
+	itemDef {
+		name       "roundTimer" // таймер окончания раунда
+		cvarTest "g_gametype"
+		hideCvar {1,2}
+		DEFAULTS_ITEM
+		textalign  0
+		style      0
+		rect       365 425 0 0
+		textstyle  3
+		forecolor  1 1 1 1
+		textscale  0.45
+		ownerdraw  CG_ROUNDTIMER // в CA до окончания раунда
+		}
+}
+
+
+//маленький таймер возле поднятия
+//*menuDef {
+	name "timer"
+	DEFAULTS_MENU
+	rect 0 296 52 18	
+	itemDef {
+		name "timerCounter"
+		rect 1 58 28 18
+		textalign 0
+		DEFAULTS_ITEM
+		textstyle 3
+		cvarTest "g_gametype"
+  		showcvar {0,1,2,3,5,6,8,9,12} // показывать в этих режимах g_gametype
+		style WINDOW_STYLE_FILLED 
+		forecolor 1 1 1 1
+		textscale 0.3
+		ownerdraw CG_LEVELTIMER
+	}
+
+}
+
+//* рамка возле поднятия и минитаймера
+
+menuDef {
+    		name "background"
+    		rect 0 0 1 1 
+    		DEFAULTS_MENU
+
+		itemDef {
+			name "PlayerHasFlagBackgroundMiddle"
+			rect 0 332 56 40
+			DEFAULTS_ITEM
+			backcolor 1 1 1 0.6
+			cvarTest "g_gametype"
+			showcvar {0,1,2,3,5,6,7,8,10,12} 
+			style 1
+			background "ui/assets/hud/scoreboxm2.tga"
+		}
+		itemDef {
+			name "PlayerHasFlagBackgroundRight"
+			rect 56 332 6 40
+			DEFAULTS_ITEM
+			backcolor 1 1 1 0.6
+			cvarTest "g_gametype"
+			showcvar {0,1,2,3,5,6,7,8,10,12} 
+			style 1
+			background "ui/assets/hud/scoreboxr2.tga"
+		}itemDef {
+			name "PlayerHasFlagBackgroundMiddle"
+			rect 0 354 56 40
+			DEFAULTS_ITEM
+			backcolor 1 1 1 0.6
+			cvarTest "g_gametype"
+			showcvar {0,1,2,3,5,6,7,8,10,12} 
+			style 1
+			background "ui/assets/hud/scoreboxm2.tga"
+		}
+		itemDef {
+			name "PlayerHasFlagBackgroundRight"
+			rect 56 354 6 40
+			DEFAULTS_ITEM
+			backcolor 1 1 1 0.6
+			cvarTest "g_gametype"
+			showcvar {0,1,2,3,5,6,7,8,10,12} 
+			style 1
+			background "ui/assets/hud/scoreboxr2.tga"
+		}
+	}
+*/

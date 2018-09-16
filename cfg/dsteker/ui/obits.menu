@@ -1,0 +1,22 @@
+#include "ui/menudef.h"
+
+// all
+#define	DEFAULTS_ITEM	decoration visible 1 widescreen 2
+
+/*============================OBITS========================*/
+menuDef {
+	name "obits"
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 2 0 74 15 
+	ownerdrawflag CG_SHOW_IF_NOT_WARMUP
+	itemDef {
+		name "obituaries"
+		rect 0 12 65 12
+		visible 1
+		textscale .18
+		ownerdraw CG_PLAYER_OBIT	
+		cvarTest "cg_gametype"
+		hideCvar { "2" }
+	}
+}

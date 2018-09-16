@@ -1,0 +1,600 @@
+#include "ui/menudef.h"
+// all
+#define	DEFAULTS_ITEM	decoration visible 1
+#define	DEFAULTS_MENU	fullScreen MENU_FALSE visible MENU_TRUE widescreen 3
+// scores
+#define	SCORES_1ST_POS	590 448 	// начальная позиция для табло очков
+#define	SCORES_2ND_POS	590 464 
+
+/*============================SCORES BOX========================*/
+//					значок типа игры					*/
+menuDef {
+	name "Icons"
+	DEFAULTS_MENU
+	rect 570 448 19 19
+	itemDef {
+		name "GameTypeIcon"
+		rect 0 0 19 19
+		ownerdraw CG_GAME_TYPE_ICON
+		visible 1
+	}
+	itemDef {
+            name "Win Limit"
+            rect 5 27 40 12
+	       visible 1
+	       forecolor 1 1 1 1
+	       textscale .20
+	       ownerdraw CG_CAPFRAGLIMIT 
+	}
+}
+//top
+menuDef {
+	name "TopScoresBG"
+	DEFAULTS_MENU	
+	rect SCORES_1ST_POS 50 16
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "SelfTRight"
+		rect 34 0 16 16 
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+	itemDef {
+		name "TLeft"
+		rect 0 0 16 16 
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "TMid"
+		rect 16 0 18 16 
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "TRight"
+		rect 34 0 16 16 
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+}
+
+//bottom
+menuDef {
+	name "BottomScoresBG"
+	DEFAULTS_MENU	
+	rect SCORES_2ND_POS 50 16
+	itemDef {
+		name "SelfTLeft"
+		rect 0 0 16 16 
+		DEFAULTS_ITEM
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "SelfTMid"
+		rect 16 0 18 16 
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "SelfTRight"
+		rect 34 0 16 16 
+		ownerdraw CG_TEAM_COLORIZED
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+	itemDef {
+		name "TLeft"
+		rect 0 0 16 16 
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonl.tga"
+	}
+	itemDef {
+		name "TMid"
+		rect 16 0 18 16 
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonm.tga"
+	}
+	itemDef {
+		name "TRight"
+		rect 34 0 16 16 
+		backcolor 1 1 1 0.25
+		ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		DEFAULTS_ITEM
+		style 1
+		background "ui/assets/hud/teamonr.tga"
+	}
+}
+
+// 	RED TEAM SCORE BAR TOP
+menuDef {
+	name "redTeamScores"
+	DEFAULTS_MENU
+	rect SCORES_1ST_POS 50 16
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+// red team score
+	itemdef {
+		name "blueTeamScore"		
+		ownerdraw CG_1STPLACE
+		rect 28 12 35 9
+		DEFAULTS_ITEM
+		forecolor 1 1 1 0.8
+		textscale .24
+		textalign 2
+		textstyle 2
+		ownerdrawflag CG_SHOW_ANYTEAMGAME
+	}
+//TDM marker
+	itemDef {
+		name "clanArena"
+		rect -4 -4 23 23
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "3" }
+		background "ui/assets/score/ca_arrow_red.tga"
+	}
+//	clan arena count
+	itemDef {
+		name "clanArena"
+		rect 2 2 21 11
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		background "ui/assets/score/ca_score_red.tga"
+	}
+	itemdef {
+		name "redClanPlayers"
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		ownerdraw CG_RED_CLAN_PLYRS  
+		rect 14 11 136 40
+		DEFAULTS_ITEM
+		textscale .18
+		forecolor 1 1 1 0.65
+	}
+//	ctf icons	
+	itemDef {
+		name "f"
+		rect 2 2 11 11
+		bordercolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_red.tga"
+	}
+	itemDef {
+		name "redflag"
+		rect 2 2 11 11
+		DEFAULTS_ITEM
+		ownerdrawflag CG_SHOW_CTF                       
+		ownerdraw CG_RED_FLAGSTATUS
+	}
+	itemDef {
+		name "oneflagstatus"
+		rect 2 9 11 11
+		DEFAULTS_ITEM              	
+		ownerdraw CG_ONEFLAG_STATUS 
+	}
+}
+
+// RED TEAM SCORE BAR BOTTOM
+menuDef {
+	name "redTeamScores"
+	DEFAULTS_MENU
+	rect SCORES_2ND_POS 50 16
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+// red team score
+	itemdef {
+		name "blueTeamScore"		
+		ownerdraw CG_1STPLACE
+		rect 28 12 35 9
+		forecolor 1 1 1 0.8
+		textscale .24
+		textalign 2
+		textstyle 2
+		DEFAULTS_ITEM
+		ownerdrawflag CG_SHOW_ANYTEAMGAME
+	}
+//TDM marker
+	itemDef {
+		name "clanArena"
+		rect -4 -4 23 23
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "3" }
+		background "ui/assets/score/ca_arrow_red.tga"
+	}
+//	clan arena count
+	itemDef {
+		name "clanArena"
+		rect 2 2 21 11
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		background "ui/assets/score/ca_score_red.tga"
+	}
+	itemdef {
+		name "redClanPlayers"
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		ownerdraw CG_RED_CLAN_PLYRS  
+		rect 14 11 136 40
+		DEFAULTS_ITEM
+		textscale .18
+		forecolor 1 1 1 0.65
+	}
+//	ctf icons	
+	itemDef {
+		name "f"
+		rect 2 2 11 11
+		bordercolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_red.tga"
+	}
+	itemDef {
+		name "redflag"
+		rect 2 2 11 11
+		DEFAULTS_ITEM
+		ownerdrawflag CG_SHOW_CTF                       
+		ownerdraw CG_RED_FLAGSTATUS
+	}
+	
+}
+
+// BLUE TEAM SCORE BAR TOP
+menuDef {
+	name "blueTeamScores"
+	DEFAULTS_MENU
+	rect SCORES_1ST_POS 50 16
+	ownerdrawflag CG_SHOW_IF_BLUE_IS_FIRST_PLACE
+// blue team score
+	itemdef {
+		name "blueTeamScore"		
+		ownerdraw CG_2NDPLACE
+		rect 28 12 35 9
+		forecolor 1 1 1 0.8
+		textscale .24
+		textalign 2
+		textstyle 2
+		DEFAULTS_ITEM
+		ownerdrawflag CG_SHOW_ANYTEAMGAME
+	}
+//TDM marker
+	itemDef {
+		name "clanArena"
+		rect -4 -4 23 23
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "3" }
+		background "ui/assets/score/ca_arrow_blue.tga"
+	}	
+//clan arena count
+	itemDef {
+		name "clanArena"
+		rect 2 2 21 11
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		background "ui/assets/score/ca_score_blu.tga"
+	}
+	itemdef {
+		name "blueClanPlayers"
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		ownerdraw CG_BLUE_CLAN_PLYRS  
+		rect 14 11 136 40
+		DEFAULTS_ITEM
+		textscale .18
+		forecolor 1 1 1 0.65
+	}
+//	ctf icons
+	itemDef {
+		name "f"
+		rect 2 2 11 11
+		bordercolor 1 1 1 .75
+		DEFAULTS_ITEM	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_blue.tga"
+	}
+	itemDef {
+		name "blueflag"
+		rect 2 2 11 11
+		DEFAULTS_ITEM   
+		ownerdrawflag CG_SHOW_CTF                    	
+		ownerdraw CG_BLUE_FLAGSTATUS
+	}
+	itemDef {
+		name "oneflagstatus"
+		rect 2 11 11 11
+		DEFAULTS_ITEM                	
+		ownerdraw CG_ONEFLAG_STATUS 
+	}
+
+}
+
+// BLUE TEAM SCORE BAR BOTTOM
+menuDef {
+	name "blueTeamScores"
+	DEFAULTS_MENU	
+	rect SCORES_2ND_POS 50 16
+	ownerdrawflag CG_SHOW_IF_RED_IS_FIRST_PLACE
+
+// blue team score
+	itemdef {
+		name "blueTeamScore"		
+		ownerdraw CG_2NDPLACE
+		rect 28 12 35 9
+		forecolor 1 1 1 0.8
+		textscale .24
+		textalign 2
+		textstyle 2
+		DEFAULTS_ITEM
+		ownerdrawflag CG_SHOW_ANYTEAMGAME
+	}
+
+//TDM marker
+	itemDef {
+		name "clanArena"
+		rect -4 -4 23 23
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "3" }
+		background "ui/assets/score/ca_arrow_blue.tga"
+	}	
+//clan arena count
+	itemDef {
+		name "clanArena"
+		rect 2 2 21 11
+		backcolor 1 1 1 1
+		DEFAULTS_ITEM	
+		style 1
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		background "ui/assets/score/ca_score_blu.tga"
+	}
+	itemdef {
+		name "blueClanPlayers"
+		cvartest g_gametype
+		showcvar { "4" ; "9" }
+		ownerdraw CG_BLUE_CLAN_PLYRS  
+		rect 14 11 136 40
+		textscale .18
+		forecolor 1 1 1 0.65
+		DEFAULTS_ITEM
+	}
+
+//	ctf icons
+	itemDef {
+		name "f"
+		rect 2 2 11 11
+		bordercolor 1 1 1 .75
+		DEFAULTS_ITEM	
+		style 3
+		ownerdrawflag CG_SHOW_HARVESTER                 
+		background "icons/skull_blue.tga"
+	}
+	itemDef {
+		name "blueflag"
+		rect 2 2 11 11
+		DEFAULTS_ITEM 
+		ownerdrawflag CG_SHOW_CTF                    	
+		ownerdraw CG_BLUE_FLAGSTATUS
+	}
+	
+}
+
+//  SCORE - FIRST PLACE 
+menuDef {
+	name "1STPlace"
+	DEFAULTS_MENU
+	rect SCORES_1ST_POS 50 16
+	ownerdrawflag CG_SHOW_ANYNONTEAMGAME
+	itemDef {
+		name "1st place"
+		DEFAULTS_ITEM
+		rect -1597 13 1640 40
+		textscale .26
+		ownerdraw CG_1ST_PLACE_SCORE
+	}	
+}
+
+//  SCORE - SECOND PLACE 
+menuDef {
+	name "Trailing"
+	DEFAULTS_MENU
+	rect SCORES_2ND_POS 50 16
+	ownerdrawflag CG_SHOW_ANYNONTEAMGAME
+	itemDef {
+		name "2nd place"
+		rect -6597 13 6640 40
+		textscale .26
+		ownerdraw CG_2ND_PLACE_SCORE
+		DEFAULTS_ITEM
+	}	
+}
+
+// обвотка очков
+
+menuDef {
+		name "NonTeamScoreBoardBorders"
+		rect -2 16 0 0
+		DEFAULTS_MENU
+		ownerdrawflag CG_SHOW_ANYNONTEAMGAME
+
+		itemDef {
+			name "Border1"
+			visible 1
+			rect 590 428 50 19
+			border WINDOW_BORDER_FULL
+			bordersize 2
+			bordercolor 0.8 0.8 0.3 1
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		}
+
+		itemDef {
+			name "Border2"
+			visible 1
+			rect 590 444 50 19
+			border WINDOW_BORDER_FULL
+			bordersize 2
+			bordercolor 0.8 0.8 0.3 1
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		}    
+	}
+
+menuDef {
+		name "TeamScoreBoardBorders"
+		rect -2 16 0 0
+		DEFAULTS_MENU
+		ownerdrawflag CG_SHOW_ANYTEAMGAME
+
+		itemDef {
+			name "Border1"
+			visible 1
+			rect 590 428 50 19
+			border WINDOW_BORDER_FULL
+			bordersize 2
+			bordercolor 0.8 0.8 0.3 1
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_FIRST_PLACE
+		}
+
+		itemDef {
+			name "Border2"
+			visible 1
+			rect 590 444 50 19
+			border WINDOW_BORDER_FULL
+			bordersize 2
+			bordercolor 0.8 0.8 0.3 1
+			ownerdrawflag CG_SHOW_IF_PLYR_IS_NOT_FIRST_PLACE
+		}    
+	}
+
+
+// RACE HUD
+
+menuDef {	
+		name "RaceHUD"
+		fullScreen MENU_FALSE
+		visible MENU_TRUE
+		rect 525 390 115 25
+		
+		itemDef {
+			name "raceBackground1"
+			rect 0 0 8 64 
+			visible 1
+			decoration
+			backcolor 1 1 1 0.8
+			style 1
+			background "ui/assets/hud/scoreboxl2.tga"
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+		
+		itemDef {
+			name "raceBackground2"
+			rect 8 0 100 64 
+			visible 1
+			decoration
+			backcolor 1 1 1 0.8
+			style 1
+			background "ui/assets/hud/scoreboxm.tga"
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+		
+		itemDef {
+			name "raceBackground3"
+			rect 108 0 8 64 
+			visible 1
+			decoration
+			backcolor 1 1 1 0.8
+			style 1
+			background "ui/assets/hud/scoreboxr.tga"
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+	
+		itemDef {
+			name "raceStatus"
+			rect 58 22 110 15
+			visible 1
+			decoration
+			align 1
+			textscale 0.25
+			ownerdraw CG_RACE_STATUS
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+	
+		itemDef {
+			name "raceTimes"
+			rect -25 -34 110 15
+			visible 1
+			decoration
+			align 0
+			textscale 0.25
+			ownerdraw CG_RACE_TIMES
+			cvarTest "cg_gametype"
+			showCvar { "2" }
+		}
+	}

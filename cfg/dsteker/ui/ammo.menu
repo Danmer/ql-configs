@@ -1,0 +1,31 @@
+#include "ui/menudef.h"
+
+// all
+#define	DEFAULTS_ITEM	decoration visible 1 widescreen 2
+
+/*============================AMMO indicator========================*/
+menuDef {
+	name "ammoIndicator" 
+	fullScreen MENU_FALSE
+	visible MENU_TRUE
+	rect 173 435 91 28 
+	itemDef {
+		name "ammoIndicatorIcon" 
+		rect 0 0 28 28
+		DEFAULTS_ITEM
+		ownerdraw CG_PLAYER_AMMO_ICON 
+	}
+	itemDef {
+		name "ammoIndicatorCounter" 
+		rect 29 0 62 22  
+		textalign 0
+		DEFAULTS_ITEM
+		textstyle 3 // ITEM_TEXTSTYLE_SHADOWED 3   drop shadow ( need a color for this )
+		forecolor 1 1 1 1 
+		textscale 0.6 
+		ownerdraw CG_PLAYER_AMMO_VALUE	
+		addColorRange -999 5 1 0 0 1  // цвет красный от -999 до 5
+		addColorRange 6 15 0.9 0.9 0 1  // цвет белый от 6 до 100 
+		addColorRange 101 999 1 1 1 1  // цвет белый от 101 до 999 (%%)!!!
+	}
+}

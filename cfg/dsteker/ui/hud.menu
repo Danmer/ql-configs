@@ -1,0 +1,24 @@
+#include "ui/menudef.h"
+
+assetGlobalDef
+      {
+		font "fonts/font" 24 //20
+    		smallFont "fonts/smallfont" 16 //16
+    		bigFont "fonts/bigfont" 48
+      }
+
+/* 
+0 = FFA, 
+1 = Duel, 	
+2 = Single Player (not usable),  race
+3 = TDM, 
+4 = CA, 
+5 = CTF, 
+6 = One-Flag CTF, 
+7 = Overload (not complete), 
+8 = Harvester, 
+9 = Freeze Tag, 
+10 = Domination, 
+11 = Attack & Defend, 
+12 = Red Rover
+*/
