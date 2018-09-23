@@ -1,0 +1,11 @@
+# specify 1 map per line, mapname|factoryid
+# ex: aerowalk|ffa
+# see factories.txt for valid factory id values
+spidercrossings|cctf
+japanesecastles|cctf
+ironworks|cctf
+troubledwaters|cctf
+shiningforces|cctf
+pillbox|cctf
+courtyard|cctf
+infinity|cctf

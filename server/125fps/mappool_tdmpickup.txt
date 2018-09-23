@@ -1,0 +1,10 @@
+# specify 1 map per line, mapname|factoryid
+# ex: aerowalk|ffa
+# see factories.txt for valid factory id values
+hiddenfortress|ttdm
+limbus|ttdm
+purgatory|ttdm
+ragnarok|ttdm
+terminatria|ttdm
+tornado|ttdm
+dreadfulplace|ttdm
